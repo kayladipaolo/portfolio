@@ -3,6 +3,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* pink theme */
+  --blush-50: #fff1f6;
+  --blush-100: #ffe4ee;
+  --blush-200: #ffc9dd;
+  --blush-300: #ff9fc4;
+  --blush-400: #ff6aa7;
+  --blush-500: #ff3d8d;
+  --blush-600: #e61f70;
+  --blush-700: #bf1458;
+  --blush-800: #971244;
+  --blush-900: #741136;
 }
 
 @theme inline {
@@ -10,13 +22,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
