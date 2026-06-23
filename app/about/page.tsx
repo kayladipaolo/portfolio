@@ -4,10 +4,9 @@ export default function AboutPage() {
       <section className="rounded-3xl border border-[var(--blush-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
         <h1 className="text-3xl font-semibold tracking-tight">About Me :)</h1>
         <p className="mt-4 max-w-2xl text-zinc-600">
-        I am extremely hardworking, very outgoing, and always down for a challenge.
-        I’m the kind of person who talks things through, asks questions, and figures things
-        out as I go. I like being busy, I learn fast, and I like pushing myself
-        to always do better.
+        Hardworking, outgoing, and always up for a challenge. I talk things through,
+        ask questions, and figure things out as I go. I like being busy, I learn fast,
+        and I like pushing myself to always do better.
         </p>
 
         <div className="mt-7 grid gap-4 md:grid-cols-2">
