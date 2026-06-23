@@ -73,15 +73,20 @@ export default async function ProjectDetailPage({
                 </p>
               </div>
 
-              {section.image && (
+              {section.images && section.images.length > 0 ? (
+                <div className="grid grid-cols-1 gap-3">
+                  {section.images.map((src, i) => (
+                    <div key={src + i} className="overflow-hidden rounded-2xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+                      <div className="relative aspect-[16/10] w-full bg-white">
+                        <Image src={src} alt={`${section.title} ${i + 1}`} fill className="object-contain p-3" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : section.image && (
                 <div className="overflow-hidden rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
                   <div className="relative aspect-[16/10] w-full bg-white">
-                    <Image
-                      src={section.image}
-                      alt={section.title}
-                      fill
-                      className="object-contain p-4"
-                    />
+                    <Image src={section.image} alt={section.title} fill className="object-contain p-4" />
                   </div>
                 </div>
               )}

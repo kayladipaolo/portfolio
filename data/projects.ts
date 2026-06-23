@@ -9,12 +9,13 @@ export type Project = {
   videoSrc?: string;
   videos?: string[];
 
-  sections?: {
-  title: string;
-  text: string;
-  image?: string;
-  reverse?: boolean;
-  }[];
+  sections?: Array<{
+    title: string;
+    text: string;
+    image?: string;
+    images?: string[];
+    reverse?: boolean;
+  }>;
 
   role?: string;
   stack: string[];
@@ -184,9 +185,7 @@ export const projects: Project[] = [
     heroImage: "/projects/smart-focus-dock/hero.jpg",
 
     gallery: [
-      "// upload circuit diagram or wiring photo here",
-      "// upload hardware build photo here",
-      "// upload 7-segment display demo screenshot here",
+      "/projects/smart-focus-dock/architecture-diagram.jpg",
     ],
 
     sections: [
@@ -194,20 +193,20 @@ export const projects: Project[] = [
         title: "Problem & Goal",
         text:
           "Phone distractions break focus during study and work sessions. The Smart Focus Dock is a small embedded device that detects when a phone is placed on the dock, starts a timed focus session, and gives clear visual feedback on progress. If the phone stays for the full duration the session is marked complete; if it's removed early, the session is flagged as interrupted. The goal was to prototype and validate the system logic before laying out a realistic hardware implementation roadmap.",
-        image: "// upload hardware demo photo here",
+        image: "/projects/smart-focus-dock/architecture-diagram.jpg",
       },
       {
         title: "Prototype (DE10-SoC)",
         text:
           "The initial prototype ran on the DE10-SoC board using switches to simulate phone presence and four LEDs to represent progress states: Idle (all off), Active (LEDs 1-4 light up progressively), Complete (all LEDs on), and Interrupted (blinking flash). A polling-loop state machine checked SW0 every cycle - pressing the switch started the session timer, releasing it early triggered the interrupted flash sequence, and holding it through all four progress steps led to completion. One bug surfaced during testing: the interrupted-state flash sequence didn't fully clear its loop variables before returning to Idle, causing leftover blink bursts after reset. Fixing the state-reset logic resolved it.",
-        image: "// upload 7-segment display demo screenshot here",
+        image: "/projects/smart-focus-dock/architecture-diagram.jpg",
         reverse: true,
       },
       {
         title: "Transition: Prototype to Product",
         text:
           "Three upgrades were planned to move toward a real consumer device. First, the pushbutton was replaced with an IR proximity sensor (Sharp GP2Y0A21YK0F) connected to the STM32's ADC for actual phone-presence detection. Second, the software-delay timer was upgraded to the STM32's hardware timer peripheral so the processor remains responsive while tracking elapsed time. Third, the LED-only interface was replaced with an SSD1306 OLED driven over I2C, displaying session time, live countdown, and completion/interrupted prompts. An added Timer Setup state lets users select session durations via GPIO buttons before the session begins.",
-        image: "// upload STM32 schematic or wireframe if available",
+        image: "/projects/smart-focus-dock/architecture-diagram.jpg",
       },
       {
         title: "STM32 Software Architecture",
@@ -370,7 +369,18 @@ export const projects: Project[] = [
     tagline:
         "Fully autonomous robot using state-based control and multi-sensor integration to identify, collect, and return target objects in an unmarked environment.",
     // youtubeId: "PASTE_VIDEO_ID_HERE", // optional
-    videoSrc: "/projects/autonomous-robot/demo.mp4",
+    heroImage: "/projects/autonomous-robot/robot-iso.jpg",
+    gallery: [
+      "/projects/autonomous-robot/robot-iso.jpg",
+      "/projects/autonomous-robot/robot-top.jpg",
+      "/projects/autonomous-robot/board-circuit.jpg",
+    ],
+    videos: [
+      "/projects/autonomous-robot/demo-1.mp4",
+      "/projects/autonomous-robot/demo-2.mp4",
+      "/projects/autonomous-robot/demo-3.mp4",
+      "/projects/autonomous-robot/demo-4.mp4",
+    ],
     stack: [
         "ESP32",
         "Embedded C/C++",
@@ -534,6 +544,9 @@ export const projects: Project[] = [
   gallery: [
     "/projects/rps1-hand/system-architecture.jpg",
     "/projects/rps1-hand/knuckles.jpg",
+    "/projects/rps1-hand/hand-view-1.jpg",
+    "/projects/rps1-hand/hand-view-2.jpg",
+    "/projects/rps1-hand/hand-view-3.jpg",
     "/projects/rps1-hand/software-flowchart.jpg",
     "/projects/rps1-hand/spool-design.jpg",
     "/projects/rps1-hand/servo-mount.jpg",
@@ -550,7 +563,11 @@ export const projects: Project[] = [
       title: "Mechanical Design",
       text:
         "The hands were 3D printed in separate bone-like finger segments and a single palm. Fingers are actuated through a tendon-driven system: DC motors wind nylon string wrapped around custom-designed spools with a centre groove to prevent entanglement. Elastic bands return the fingers to their default position when the motor reverses, eliminating the need for return actuators. A servo-driven cover mechanism performs the 'minus one' action - one hand is covered based on the optimal calculated move.",
-      image: "/projects/rps1-hand/knuckles.jpg",
+      images: [
+          "/projects/rps1-hand/hand-view-1.jpg",
+          "/projects/rps1-hand/hand-view-2.jpg",
+          "/projects/rps1-hand/hand-view-3.jpg",
+        ],
       reverse: true,
     },
     {
@@ -621,7 +638,7 @@ export const projects: Project[] = [
   ],
 
   videos: [
-    "/projects/rps1-hand/demo.mp4",
+    "/projects/rps1-hand/demo.mov",
   ],
 
   links: [
