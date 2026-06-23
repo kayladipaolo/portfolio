@@ -2,17 +2,17 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 
-  /* neutral/slate */
-  --surface-50: #f8f9fb;
-  --surface-100: #f1f3f7;
-  --surface-200: #dde1e9;
-  --surface-300: #c2c8d4;
-  --surface-400: #a3aec0;
-  --surface-500: #8892a4;
-  --surface-700: #4a5568;
-  --surface-900: #1e293b;
+  /* monochrome scale */
+  --surface-50: #ffffff;
+  --surface-100: #f7f7f7;
+  --surface-200: #e5e5e5;
+  --surface-300: #cccccc;
+  --surface-400: #999999;
+  --surface-500: #666666;
+  --surface-700: #333333;
+  --surface-900: #000000;
 }
 
 @theme inline {

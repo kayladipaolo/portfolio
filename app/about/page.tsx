@@ -1,16 +1,16 @@
 export default function AboutPage() {
   return (
     <div className="space-y-8">
-      <section className="rounded-3xl border border-[var(--surface-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
+      <section className="rounded-3xl border border-[var(--surface-100)] bg-[var(--surface-50)]/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
         <h1 className="text-3xl font-semibold tracking-tight">About Me :)</h1>
-        <p className="mt-4 max-w-2xl text-zinc-600">
+        <p className="mt-4 max-w-2xl text-[var(--surface-500)]">
         Hardworking, curious, and I like figuring things out rather than waiting for an answer. I tend to learn by doing, and I’d much rather build something wrong and fix it than wait until it’s perfect on paper. I ask a lot of questions, I’m direct in how I work, and when something is unclear I’ll keep at it until it makes sense.
         </p>
 
         <div className="mt-7 grid gap-4 md:grid-cols-2">
-          <div className="rounded-3xl border border-[var(--surface-100)] bg-white p-6">
+          <div className="rounded-3xl border border-[var(--surface-100)] bg-[var(--surface-50)] p-6">
             <h2 className="font-semibold">What I’m like to work with</h2>
-            <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-zinc-600">
+            <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-[var(--surface-500)]">
             <li>Highly motivated and not afraid of hard problems</li>
             <li>Outgoing, talkative, and comfortable speaking up</li>
             <li>Determined to finish what I start</li>
@@ -18,9 +18,9 @@ export default function AboutPage() {
             </ul>
           </div>
 
-          <div className="rounded-3xl border border-[var(--surface-100)] bg-white p-6">
+          <div className="rounded-3xl border border-[var(--surface-100)] bg-[var(--surface-50)] p-6">
             <h2 className="font-semibold">What drives me</h2>
-            <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-zinc-600">
+            <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-[var(--surface-500)]">
             <li>Loving a good challenge and learning under pressure</li>
             <li>Meeting new people and working in team environments</li>
             <li>Growing through hands-on projects, not just theory</li>
@@ -30,7 +30,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="rounded-3xl border border-[var(--surface-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+      <section className="rounded-3xl border border-[var(--surface-100)] bg-[var(--surface-50)] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
         <h2 className="font-semibold">Skills</h2>
         <div className="mt-4 flex flex-wrap gap-2">
           {[
@@ -60,7 +60,7 @@ export default function AboutPage() {
           ].map((s) => (
             <span
               key={s}
-              className="rounded-full border border-[var(--surface-100)] bg-white px-3 py-1 text-xs text-zinc-700"
+              className="rounded-full border border-[var(--surface-100)] bg-[var(--surface-50)] px-3 py-1 text-xs text-[var(--surface-700)]"
             >
               {s}
             </span>
