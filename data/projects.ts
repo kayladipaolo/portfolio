@@ -180,12 +180,12 @@ export const projects: Project[] = [
     slug: "smart-focus-dock",
     title: "Smart Focus Dock",
     tagline:
-      "An embedded state-machine system that turns phone-down time into measurable focus sessions — from DE10-SoC prototyping to a proposed STM32 product with IR proximity sensing and OLED feedback.",
+      "An embedded state-machine system that turns phone-down time into measurable focus sessions — prototyped on the DE10-SoC and proposed as an STM32 product with IR proximity sensing and OLED feedback.",
 
-    heroImage: "/projects/smart-focus-dock/hero.jpg",
+    heroImage: "/projects/smart-focus-dock/hero-image.jpg",
 
     gallery: [
-      "/projects/smart-focus-dock/architecture-diagram.jpg",
+      "/projects/smart-focus-dock/system-flowchart.jpg",
     ],
 
     sections: [
@@ -193,20 +193,19 @@ export const projects: Project[] = [
         title: "Problem & Goal",
         text:
           "Phone distractions break focus during study and work sessions. The Smart Focus Dock is a small embedded device that detects when a phone is placed on the dock, starts a timed focus session, and gives clear visual feedback on progress. If the phone stays for the full duration the session is marked complete; if it's removed early, the session is flagged as interrupted. The goal was to prototype and validate the system logic before laying out a realistic hardware implementation roadmap.",
-        image: "/projects/smart-focus-dock/architecture-diagram.jpg",
+        image: "/projects/smart-focus-dock/hero-image.jpg",
       },
       {
         title: "Prototype (DE10-SoC)",
         text:
           "The initial prototype ran on the DE10-SoC board using switches to simulate phone presence and four LEDs to represent progress states: Idle (all off), Active (LEDs 1-4 light up progressively), Complete (all LEDs on), and Interrupted (blinking flash). A polling-loop state machine checked SW0 every cycle - pressing the switch started the session timer, releasing it early triggered the interrupted flash sequence, and holding it through all four progress steps led to completion. One bug surfaced during testing: the interrupted-state flash sequence didn't fully clear its loop variables before returning to Idle, causing leftover blink bursts after reset. Fixing the state-reset logic resolved it.",
-        image: "/projects/smart-focus-dock/architecture-diagram.jpg",
+        image: "/projects/smart-focus-dock/system-flowchart.jpg",
         reverse: true,
       },
       {
         title: "Transition: Prototype to Product",
         text:
           "Three upgrades were planned to move toward a real consumer device. First, the pushbutton was replaced with an IR proximity sensor (Sharp GP2Y0A21YK0F) connected to the STM32's ADC for actual phone-presence detection. Second, the software-delay timer was upgraded to the STM32's hardware timer peripheral so the processor remains responsive while tracking elapsed time. Third, the LED-only interface was replaced with an SSD1306 OLED driven over I2C, displaying session time, live countdown, and completion/interrupted prompts. An added Timer Setup state lets users select session durations via GPIO buttons before the session begins.",
-        image: "/projects/smart-focus-dock/architecture-diagram.jpg",
       },
       {
         title: "STM32 Software Architecture",
@@ -273,6 +272,66 @@ export const projects: Project[] = [
       {
         label: "GitHub Repository",
         href: "https://github.com/kayladipaolo/Smart-Focus-Dock",
+      },
+    ],
+  },
+
+
+  {
+    slug: "pmdc-motor-modeling",
+    title: "PMDC Motor Modeling",
+    tagline:
+      "Mathematical modeling and virtual validation of a Permanent Magnet DC motor across open-loop and closed-loop control using MATLAB/Simulink.",
+    heroImage: "/projects/pmdc-motor-modeling/overall-view.jpg",
+    stack: [
+      "MATLAB",
+      "Simulink",
+      "PWM",
+      "H-Bridge",
+      "PI Control",
+      "DC Motor Festo",
+      "Power Electronics",
+    ],
+
+    overview:
+      "The goal was to build a mathematical model of a Festo 24 V brushed DC motor and validate it in Simulink using the motor excitation test data. Three scenarios were evaluated: open-loop duty-cycle speed control, closed-loop PI speed control, and closed-loop PI torque control under varying load conditions.",
+
+    problem:
+      "Predicting PMDC motor behaviour across different operation modes requires a consistent modelling approach that captures electrical, mechanical, and load-dependent non-linearities. A model that only fits one scenario breaks down under different operating conditions, so the team needed a structure that could be updated consistently across open-loop, speed, and torque control cases.",
+
+    solution:
+      "The motor was modelled in Simulink using transfer functions derived from the motor's electrical (armature resistance, inductance, back-EMF constant) and mechanical parameters (moment of inertia, viscous friction, load torque). Current, speed, and position loops were wrapped with PI controllers whose gains were tuned iteratively in Simulink, then cross-checked against the motor datasheet test data.",
+
+    outcome:
+      "The update-to-date Simulink model successfully matched the published excitation-test results in the neighbourhood-uncertain region. Open-loop duty-cycle control showed the expected speed-to-duty linearity, the closed-loop speed controller reduced steady-state error under varying load, and the torque-control loop delivered consistent torque output during simulated loading. The model's validation matched the reference curve, and the report's final model met the project spec.",
+
+    bullets: [
+      "Derived transfer functions for the Festo 24 V PMDC motor from armature electrical and mechanical parameters",
+      "Built initial Simulink model from first principles and matched it to the excitation-test published dataset",
+      "Evaluated open-loop duty-cycle speed control and characterized speed-to-duty linearity",
+      "Implemented closed-loop PI speed controller tuned for steady-state accuracy under varying load",
+      "Designed a closed-loop PI torque-control loop for consistent torque output during loading",
+      "Used iterative Simulink tuning and analytical PI equations to align the three scenarios into a single consistent model",
+    ],
+
+    challenges: [
+      "Motor non-linearity near zero made small-signal PI tuning unstable at very low speeds",
+      "Load variations shifted the operating point and required separate PI gain sets for different control loops",
+      "Simulink solver step-size affected numerical noise in position and acceleration signals",
+      "Reconciling the project model with the published datasheet curve required normalizing parameter scales",
+    ],
+
+    learnings: [
+      "A first-principles Simulink model is more generalizable than curve-fitting one operating point",
+      "PI controller performance is tightly coupled to sampling rate, solver step, and load assumptions",
+      "Iterative simulation tuning in Simulink is more productive when paired with analytical PI design equations",
+      "Motor modeling naturally spans three control domains (current/speed/torque) that must stay consistent with each other",
+    ],
+
+    links: [
+      {
+        label: "Course Folder",
+        href: "https://github.com/kayladipaolo/PMDC-Motor-Modeling",
       },
     ],
   },
@@ -526,12 +585,7 @@ export const projects: Project[] = [
     "Distributed robotics architectures improve maintainability and future extensibility",
   ],
 
-  links: [
-    {
-      label: "GitHub Repository",
-      href: "https://github.com/kayladipaolo/RPS_Hand",
-    },
-  ],
+  links: [],
  },
  {
   slug: "rps1-hand",
@@ -641,11 +695,5 @@ export const projects: Project[] = [
     "/projects/rps1-hand/demo.mov",
   ],
 
-  links: [
-    {
-      label: "GitHub Repository",
-      href: "https://github.com/kayladipaolo/RPS_Hand",
-    },
-  ],
- }
+}
 ];
