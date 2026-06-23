@@ -193,14 +193,11 @@ export const projects: Project[] = [
         title: "Problem & Goal",
         text:
           "Phone distractions break focus during study and work sessions. The Smart Focus Dock is a small embedded device that detects when a phone is placed on the dock, starts a timed focus session, and gives clear visual feedback on progress. If the phone stays for the full duration the session is marked complete; if it's removed early, the session is flagged as interrupted. The goal was to prototype and validate the system logic before laying out a realistic hardware implementation roadmap.",
-        image: "/projects/smart-focus-dock/hero-image.jpg",
       },
       {
         title: "Prototype (DE10-SoC)",
         text:
           "The initial prototype ran on the DE10-SoC board using switches to simulate phone presence and four LEDs to represent progress states: Idle (all off), Active (LEDs 1-4 light up progressively), Complete (all LEDs on), and Interrupted (blinking flash). A polling-loop state machine checked SW0 every cycle - pressing the switch started the session timer, releasing it early triggered the interrupted flash sequence, and holding it through all four progress steps led to completion. One bug surfaced during testing: the interrupted-state flash sequence didn't fully clear its loop variables before returning to Idle, causing leftover blink bursts after reset. Fixing the state-reset logic resolved it.",
-        image: "/projects/smart-focus-dock/system-flowchart.jpg",
-        reverse: true,
       },
       {
         title: "Transition: Prototype to Product",
