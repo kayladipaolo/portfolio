@@ -9,7 +9,7 @@ export default function ContactPage() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-3xl border border-[var(--blush-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
+      <section className="rounded-3xl border border-[var(--surface-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
         <h1 className="text-3xl font-semibold tracking-tight">Contact</h1>
         <p className="mt-3 max-w-2xl text-zinc-600">
           Thank you for taking the time to visit my portfolio! I’m always excited
@@ -18,7 +18,7 @@ export default function ContactPage() {
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {/* Email */}
-          <div className="rounded-3xl border border-[var(--blush-100)] bg-white p-6">
+          <div className="rounded-3xl border border-[var(--surface-100)] bg-white p-6">
             <div className="text-sm font-semibold">Email</div>
 
             <div className="mt-3 flex items-center justify-between gap-4 rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3">
@@ -35,7 +35,7 @@ export default function ContactPage() {
                 ${
                 copied
                     ? "bg-green-100 text-green-700 border border-green-200"
-                    : "border border-[var(--blush-200)] hover:bg-[var(--blush-50)]"
+                    : "border border-[var(--surface-200)] hover:bg-[var(--surface-50)]"
                 }
             `}
             >
@@ -49,7 +49,7 @@ export default function ContactPage() {
             href={linkedin}
             target="_blank"
             rel="noreferrer"
-            className="block rounded-3xl border border-[var(--blush-100)] bg-white p-6 hover:bg-[var(--blush-50)]"
+            className="block rounded-3xl border border-[var(--surface-100)] bg-white p-6 hover:bg-[var(--surface-50)]"
           >
             <div className="text-sm font-semibold">LinkedIn</div>
             <div className="mt-3 text-sm text-zinc-600">View my LinkedIn profile</div>

@@ -18,14 +18,14 @@ export default async function ProjectDetailPage({
       {/* Back link */}
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 rounded-full border border-[var(--blush-200)] bg-white px-4 py-2 text-sm text-zinc-800 hover:bg-[var(--blush-50)]"
+        className="inline-flex items-center gap-2 rounded-full border border-[var(--surface-200)] bg-white px-4 py-2 text-sm text-zinc-800 hover:bg-[var(--surface-50)]"
       >
         ← Back to Projects
       </Link>
 
       {/* Header */}
-      <section className="rounded-3xl border border-[var(--blush-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
-        <p className="text-sm font-medium text-[var(--blush-700)]">Project</p>
+      <section className="rounded-3xl border border-[var(--surface-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
+        <p className="text-sm font-medium text-[var(--surface-700)]">Project</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight">{p.title}</h1>
         <p className="mt-3 max-w-2xl text-zinc-600">{p.tagline}</p>
 
@@ -33,7 +33,7 @@ export default async function ProjectDetailPage({
           {p.stack.map((s) => (
             <span
               key={s}
-              className="rounded-full border border-[var(--blush-100)] bg-white px-3 py-1 text-xs text-zinc-700"
+              className="rounded-full border border-[var(--surface-100)] bg-white px-3 py-1 text-xs text-zinc-700"
             >
               {s}
             </span>
@@ -42,7 +42,7 @@ export default async function ProjectDetailPage({
       </section>
 
       {p.heroImage && (
-        <section className="overflow-hidden rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <section className="overflow-hidden rounded-3xl border border-[var(--surface-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
           <div className="relative aspect-[16/9] w-full bg-white">
             <Image
               src={p.heroImage}
@@ -76,7 +76,7 @@ export default async function ProjectDetailPage({
               {section.images && section.images.length > 0 ? (
                 <div className="grid grid-cols-1 gap-3">
                   {section.images.map((src, i) => (
-                    <div key={src + i} className="overflow-hidden rounded-2xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+                    <div key={src + i} className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
                       <div className="relative aspect-[16/10] w-full bg-white">
                         <Image src={src} alt={`${section.title} ${i + 1}`} fill className="object-contain p-3" />
                       </div>
@@ -84,7 +84,7 @@ export default async function ProjectDetailPage({
                   ))}
                 </div>
               ) : section.image && (
-                <div className="overflow-hidden rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+                <div className="overflow-hidden rounded-3xl border border-[var(--surface-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
                   <div className="relative aspect-[16/10] w-full bg-white">
                     <Image src={section.image} alt={section.title} fill className="object-contain p-4" />
                   </div>
@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({
       ) : null}
 
       {p.videos?.length ? (
-        <section className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <section className="rounded-3xl border border-[var(--surface-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
           <div className="mb-6">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
               Demo
@@ -114,7 +114,7 @@ export default async function ProjectDetailPage({
                 </h3>
 
                 <video
-                  className="w-full rounded-2xl border border-[var(--blush-100)] bg-black"
+                  className="w-full rounded-2xl border border-[var(--surface-100)] bg-black"
                   src={src}
                   controls
                   playsInline
@@ -128,7 +128,7 @@ export default async function ProjectDetailPage({
       {/* Overview boxes */}
 
       {/* Key Contributions */}
-      <section className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+      <section className="rounded-3xl border border-[var(--surface-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
         <h2 className="font-semibold">Key Contributions</h2>
         <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-zinc-600">
           {p.bullets.map((b) => (
@@ -141,7 +141,7 @@ export default async function ProjectDetailPage({
       {(p.challenges?.length || p.learnings?.length) && (
         <section className="grid gap-4 md:grid-cols-2">
           {p.challenges?.length ? (
-            <div className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+            <div className="rounded-3xl border border-[var(--surface-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
               <h2 className="font-semibold">Challenges</h2>
               <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-zinc-600">
                 {p.challenges.map((c) => (
@@ -152,7 +152,7 @@ export default async function ProjectDetailPage({
           ) : null}
 
           {p.learnings?.length ? (
-            <div className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+            <div className="rounded-3xl border border-[var(--surface-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
               <h2 className="font-semibold">What I learned</h2>
               <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-zinc-600">
                 {p.learnings.map((l) => (
@@ -166,7 +166,7 @@ export default async function ProjectDetailPage({
 
       {/* Links (optional) */}
       {p.links?.length ? (
-        <section className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <section className="rounded-3xl border border-[var(--surface-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
           <h2 className="font-semibold">Links</h2>
           <div className="mt-4 flex flex-wrap gap-3">
             {p.links.map((lnk) => (
@@ -175,7 +175,7 @@ export default async function ProjectDetailPage({
                 href={lnk.href}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-[var(--blush-600)] px-5 py-2.5 text-sm font-medium text-white hover:bg-[var(--blush-700)]"
+                className="rounded-full bg-[var(--surface-700)] px-5 py-2.5 text-sm font-medium text-white hover:bg-[var(--surface-700)]"
               >
                 {lnk.label}
               </a>

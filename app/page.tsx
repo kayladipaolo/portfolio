@@ -5,8 +5,8 @@ export default function HomePage() {
   return (
     <div className="space-y-10">
       {/* Hero */}
-      <section className="rounded-3xl border border-[var(--blush-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
-        <p className="text-sm font-medium text-[var(--blush-700)]">
+      <section className="rounded-3xl border border-[var(--surface-100)] bg-white/80 p-10 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
+        <p className="text-sm font-medium text-[var(--surface-700)]">
           Portfolio
         </p>
 
@@ -16,29 +16,29 @@ export default function HomePage() {
 
         <p className="mt-4 max-w-2xl text-zinc-600">
           I'm an undergraduate Mechatronics & AI Systems Engineering student at
-          Western University. A few builds I'm proud of — complex problem, far from
-          clear solution ;), real outcome (thank goodness). The products below are all
-          projects I've worked on. Enjoy and don't hesitate to reach out!
+          Western University. A few builds I'm proud of: complex problem, far from
+          clear solution, real outcome. These are all projects I've worked on. Feel
+          free to reach out.
         </p>
 
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
             href="/projects"
-            className="rounded-full bg-[var(--blush-600)] px-5 py-2.5 text-sm font-medium text-white hover:bg-[var(--blush-700)]"
+            className="rounded-full bg-[var(--surface-700)] px-5 py-2.5 text-sm font-medium text-white hover:bg-[var(--surface-700)]"
           >
             View All Projects
           </Link>
 
           <Link
             href="/about"
-            className="rounded-full border border-[var(--blush-200)] px-5 py-2.5 text-sm font-medium text-zinc-900 hover:bg-[var(--blush-50)]"
+            className="rounded-full border border-[var(--surface-200)] px-5 py-2.5 text-sm font-medium text-zinc-900 hover:bg-[var(--surface-50)]"
           >
             About Me
           </Link>
 
           <Link
             href="/contact"
-            className="rounded-full border border-[var(--blush-200)] px-5 py-2.5 text-sm font-medium text-zinc-900 hover:bg-[var(--blush-50)]"
+            className="rounded-full border border-[var(--surface-200)] px-5 py-2.5 text-sm font-medium text-zinc-900 hover:bg-[var(--surface-50)]"
           >
             Contact
           </Link>
@@ -57,7 +57,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/projects"
-            className="text-sm font-medium text-[var(--blush-700)] hover:underline"
+            className="text-sm font-medium text-[var(--surface-700)] hover:underline"
           >
             View all →
           </Link>
@@ -68,7 +68,7 @@ export default function HomePage() {
             <Link
               key={p.slug}
               href={`/projects/${p.slug}`}
-              className="group rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5 hover:border-[var(--blush-200)]"
+              className="group rounded-3xl border border-[var(--surface-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5 hover:border-[var(--surface-200)]"
             >
               {p.heroImage && (
                 <div className="overflow-hidden rounded-t-[calc(1.5rem-1px)]">
@@ -80,7 +80,7 @@ export default function HomePage() {
                 </div>
               )}
               <div className="p-5">
-                <h3 className="font-semibold tracking-tight group-hover:text-[var(--blush-700)]">
+                <h3 className="font-semibold tracking-tight group-hover:text-[var(--surface-700)]">
                   {p.title}
                 </h3>
                 <p className="mt-2 line-clamp-2 text-sm text-zinc-600">
@@ -90,13 +90,13 @@ export default function HomePage() {
                   {p.stack.slice(0, 4).map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-[var(--blush-100)] bg-white px-2.5 py-0.5 text-[11px] text-zinc-600"
+                      className="rounded-full border border-[var(--surface-100)] bg-white px-2.5 py-0.5 text-[11px] text-zinc-600"
                     >
                       {t}
                     </span>
                   ))}
                   {p.stack.length > 4 && (
-                    <span className="rounded-full border border-[var(--blush-100)] bg-white px-2.5 py-0.5 text-[11px] text-zinc-400">
+                    <span className="rounded-full border border-[var(--surface-100)] bg-white px-2.5 py-0.5 text-[11px] text-zinc-400">
                       +{p.stack.length - 4}
                     </span>
                   )}
