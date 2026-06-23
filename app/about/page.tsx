@@ -50,7 +50,7 @@ export default function AboutPage() {
             "Computer Vision",
             "MATLAB",
             "CAD",
-            "Raspbery Pi",
+            "Raspberry Pi",
             "Arduino",
             "Collaboration",
             "Problem Solving",

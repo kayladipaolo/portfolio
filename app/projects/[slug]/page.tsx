@@ -41,59 +41,90 @@ export default async function ProjectDetailPage({
         </div>
       </section>
 
-
-      {(p.heroImage || p.videoSrc) && (
-        <section className="space-y-3">
-            <div className="overflow-hidden rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-            {p.heroImage && (
-                <div className="relative aspect-[16/10] w-full bg-white">
-                <Image
-                    src={p.heroImage}
-                    alt={`${p.title} architecture diagram`}
-                    fill
-                    className="object-contain p-4"
-                    priority
-                />
-                </div>
-            )}
-
-            {p.videoSrc && (
-                <video
-                className="w-full aspect-video bg-black"
-                src={p.videoSrc}
-                controls
-                playsInline
-                />
-            )}
-            </div>
-
-            <p className="text-sm text-zinc-500">
-            High-level overview of how user input flows through the system and into a final recommendation.
-            </p>
+      {p.heroImage && (
+        <section className="overflow-hidden rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+          <div className="relative aspect-[16/9] w-full bg-white">
+            <Image
+              src={p.heroImage}
+              alt={`${p.title} main project image`}
+              fill
+              className="object-contain p-4"
+              priority
+            />
+          </div>
         </section>
-     )}
+      )}
+
+      {p.sections?.length ? (
+        <section className="space-y-20">
+          {p.sections.map((section) => (
+            <div
+              key={section.title}
+              className={`grid items-center gap-8 md:grid-cols-2 ${
+                section.reverse ? "md:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              <div>
+                <h2 className="mb-6 text-4xl font-bold text-[var(--ink)]">
+                  {section.title}
+                </h2>
+                <p className="text-lg leading-8 text-[var(--muted)]">
+                  {section.text}
+                </p>
+              </div>
+
+              {section.image && (
+                <div className="overflow-hidden rounded-3xl border border-[var(--blush-100)] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+                  <div className="relative aspect-[16/10] w-full bg-white">
+                    <Image
+                      src={section.image}
+                      alt={section.title}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+      ) : null}
+
+      {p.videos?.length ? (
+        <section className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+          <div className="mb-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+              Demo
+            </p>
+            <h2 className="mt-2 text-3xl font-bold text-[var(--ink)]">
+              Live System Demonstrations
+            </h2>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {p.videos.map((src, index) => (
+              <div key={src} className="space-y-3">
+                <h3 className="font-semibold">
+                  {index === 0 ? "Autonomous Mode" : "Manual Control"}
+                </h3>
+
+                <video
+                  className="w-full rounded-2xl border border-[var(--blush-100)] bg-black"
+                  src={src}
+                  controls
+                  playsInline
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {/* Overview boxes */}
-      <section className="grid gap-4 md:grid-cols-2">
-        {[
-          { label: "Overview", value: p.overview },
-          { label: "Problem", value: p.problem },
-          { label: "Solution", value: p.solution },
-          { label: "Outcome", value: p.outcome },
-        ].map((x) => (
-          <div
-            key={x.label}
-            className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
-          >
-            <h2 className="text-sm font-semibold">{x.label}</h2>
-            <p className="mt-2 text-sm text-zinc-600">{x.value}</p>
-          </div>
-        ))}
-      </section>
 
-      {/* What I did */}
+      {/* Key Contributions */}
       <section className="rounded-3xl border border-[var(--blush-100)] bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-        <h2 className="font-semibold">What I did</h2>
+        <h2 className="font-semibold">Key Contributions</h2>
         <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-zinc-600">
           {p.bullets.map((b) => (
             <li key={b}>{b}</li>
