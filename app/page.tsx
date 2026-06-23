@@ -15,10 +15,10 @@ export default function HomePage() {
         </h1>
 
         <p className="mt-4 max-w-2xl text-[var(--surface-500)]">
-          I'm an undergraduate Mechatronics & AI Systems Engineering student at
-          Western University. A few builds I'm proud of: complex problem, far from
-          clear solution, real outcome. These are all projects I've worked on. Feel
-          free to reach out.
+          I'm a Mechatronics & AI Systems Engineering student at Western University,
+          building projects across hardware, software, and AI. I like taking on
+          hands-on problems, figuring things out as I go, and turning ideas into
+          working builds. Feel free to reach out.
         </p>
 
         <div className="mt-7 flex flex-wrap gap-3">

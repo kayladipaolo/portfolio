@@ -7,7 +7,9 @@ export default function ProjectsPage() {
       <div className="rounded-3xl border border-[var(--surface-100)] bg-[var(--surface-50)]/80 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur">
         <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
         <p className="mt-2 text-[var(--surface-500)]">
-          A few builds I’m proud of — complex problem, far from clear solution ;), real outcome (thank goodness).
+          I'm drawn to problems where the path is unclear, the constraints are real,
+          and the final result has to actually work. Below are a few builds I'm proud
+          of.
         </p>
       </div>
 
