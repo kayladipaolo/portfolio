@@ -83,13 +83,17 @@ export default async function ProjectDetailPage({
                     </div>
                   ))}
                 </div>
-              ) : section.image && (
-                <div className="overflow-hidden rounded-3xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-                  <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
-                    <Image src={section.image} alt={section.title} fill className="object-contain p-4" />
-                  </div>
+              ) : section.images && section.images.length > 0 ? (
+                <div className={`grid gap-3 ${section.images.length === 2 ? "md:grid-cols-2" : "grid-cols-1"}`}>
+                  {section.images.map((src, i) => (
+                    <div key={src + i} className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+                      <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
+                        <Image src={src} alt={`${section.title} ${i + 1}`} fill className="object-contain p-3" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              )}
+              ) : null}
             </div>
           ))}
         </section>

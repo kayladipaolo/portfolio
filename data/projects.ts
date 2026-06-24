@@ -193,6 +193,10 @@ export const projects: Project[] = [
         title: "Problem & Goal",
         text:
           "Phone distractions break focus during study and work sessions. The Smart Focus Dock is a small embedded device that detects when a phone is placed on the dock, starts a timed focus session, and gives clear visual feedback on progress. If the phone stays for the full duration the session is marked complete; if it's removed early, the session is flagged as interrupted. The goal was to prototype and validate the system logic before laying out a realistic hardware implementation roadmap.",
+        images: [
+          "/projects/smart-focus-dock/hero-image.jpg",
+          "/projects/smart-focus-dock/system-flowchart.jpg",
+        ],
       },
       {
         title: "Prototype (DE10-SoC)",
