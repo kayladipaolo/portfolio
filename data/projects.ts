@@ -284,7 +284,7 @@ export const projects: Project[] = [
     title: "PMDC Motor Modeling",
     tagline:
       "Mathematical modeling and virtual validation of a Permanent Magnet DC motor across open-loop and closed-loop control using MATLAB/Simulink.",
-    heroImage: "/projects/pmdc-motor-modeling/overall-view.jpg",
+    heroImage: "/projects/pmdc-motor-modeling/hero-image.jpg",
     stack: [
       "MATLAB",
       "Simulink",
