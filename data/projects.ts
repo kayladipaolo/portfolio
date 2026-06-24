@@ -183,6 +183,8 @@ export const projects: Project[] = [
     tagline:
       "An embedded state-machine system that turns phone-down time into measurable focus sessions — prototyped on the DE10-SoC and proposed as an STM32 product with IR proximity sensing and OLED feedback.",
 
+    heroImage: "/projects/smart-focus-dock/hero-image.jpg",
+
     gallery: [
       "/projects/smart-focus-dock/system-flowchart.jpg",
     ],
