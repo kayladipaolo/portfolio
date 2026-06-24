@@ -15,6 +15,7 @@ export type Project = {
     image?: string;
     images?: string[];
     reverse?: boolean;
+    group?: number;
   }>;
 
   role?: string;
@@ -182,20 +183,20 @@ export const projects: Project[] = [
     tagline:
       "An embedded state-machine system that turns phone-down time into measurable focus sessions — prototyped on the DE10-SoC and proposed as an STM32 product with IR proximity sensing and OLED feedback.",
 
-    heroImage: "/projects/smart-focus-dock/hero-image.jpg",
-
     gallery: [
       "/projects/smart-focus-dock/system-flowchart.jpg",
     ],
 
     sections: [
       {
+        group: 1,
         title: "Problem & Goal",
         text:
           "Phone distractions break focus during study and work sessions. The Smart Focus Dock is a small embedded device that detects when a phone is placed on the dock, starts a timed focus session, and gives clear visual feedback on progress. If the phone stays for the full duration the session is marked complete; if it's removed early, the session is flagged as interrupted. The goal was to prototype and validate the system logic before laying out a realistic hardware implementation roadmap.",
         image: "/projects/smart-focus-dock/hero-image.jpg",
       },
       {
+        group: 2,
         title: "Prototype (DE10-SoC)",
         text:
           "The initial prototype ran on the DE10-SoC board using switches to simulate phone presence and four LEDs to represent progress states: Idle (all off), Active (LEDs 1-4 light up progressively), Complete (all LEDs on), and Interrupted (blinking flash). A polling-loop state machine checked SW0 every cycle - pressing the switch started the session timer, releasing it early triggered the interrupted flash sequence, and holding it through all four progress steps led to completion. One bug surfaced during testing: the interrupted-state flash sequence didn't fully clear its loop variables before returning to Idle, causing leftover blink bursts after reset. Fixing the state-reset logic resolved it.",
@@ -203,11 +204,13 @@ export const projects: Project[] = [
         reverse: true,
       },
       {
+        group: 3,
         title: "Transition: Prototype to Product",
         text:
           "Three upgrades were planned to move toward a real consumer device. First, the pushbutton was replaced with an IR proximity sensor (Sharp GP2Y0A21YK0F) connected to the STM32's ADC for actual phone-presence detection. Second, the software-delay timer was upgraded to the STM32's hardware timer peripheral so the processor remains responsive while tracking elapsed time. Third, the LED-only interface was replaced with an SSD1306 OLED driven over I2C, displaying session time, live countdown, and completion/interrupted prompts. An added Timer Setup state lets users select session durations via GPIO buttons before the session begins.",
       },
       {
+        group: 3,
         title: "STM32 Software Architecture",
         text:
           "The proposed final implementation shifts from polling to an interrupt-driven design: the IR sensor connects to an external GPIO interrupt so phone placement and removal are handled instantly, timer-selection buttons use GPIO interrupts, and a hardware timer fires every 1 second to update the countdown without blocking the CPU. The state machine expands to five states - Idle -> Timer Setup -> Focus Active -> Session Complete / Session Interrupted -> back to Idle - with each state managed by a dedicated module (Input, Timer, State Machine, Display).",

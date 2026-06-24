@@ -56,46 +56,84 @@ export default async function ProjectDetailPage({
       )}
 
       {p.sections?.length ? (
-        <section className="space-y-20">
-          {p.sections.map((section) => (
-            <div
-              key={section.title}
-              className={`grid items-center gap-8 md:grid-cols-2 ${
-                section.reverse ? "md:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-              <div>
-                <h2 className="mb-6 text-4xl font-bold text-[var(--ink)]">
-                  {section.title}
-                </h2>
-                <p className="text-lg leading-8 text-[var(--muted)]">
-                  {section.text}
-                </p>
-              </div>
+        <section className="space-y-24">
+          {(() => {
+            interface GroupItem {
+              title: string;
+              text: string;
+              image?: string | undefined;
+              reverse?: boolean;
+            }
 
-              {section.images && section.images.length > 0 ? (
-                <div className="grid grid-cols-1 gap-3">
-                  {section.images.map((src, i) => (
-                    <div key={src + i} className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-                      <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
-                        <Image src={src} alt={`${section.title} ${i + 1}`} fill className="object-contain p-3" />
+            const groups: GroupItem[][] = [];
+            let current: GroupItem[] = [];
+            let lastGroupKey: number | undefined = undefined;
+
+            p.sections.forEach((s) => {
+              const gk = (s as any).group as number | undefined;
+              if (gk === undefined || gk !== lastGroupKey) {
+                if (current.length) groups.push(current);
+                current = [];
+                lastGroupKey = gk;
+              }
+              current.push({
+                title: s.title,
+                text: s.text,
+                image: s.image,
+                reverse: !!s.reverse,
+              });
+            });
+            if (current.length) groups.push(current);
+
+            return groups.map((group, gIdx) => {
+              const textItems = group.filter((g) => !g.image);
+              const imageItems = group.filter((g): g is GroupItem & { image: string } => !!g.image);
+              const [mainItem] = group;
+              const isReversed = mainItem?.reverse && imageItems.length > 0;
+
+              return (
+                <div
+                  key={gIdx}
+                  className={`grid items-start gap-8 md:grid-cols-2 ${
+                    isReversed ? "md:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <div className="space-y-6">
+                    {textItems.map((t) => (
+                      <div key={t.title}>
+                        <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
+                          {t.title}
+                        </h2>
+                        <p className="text-lg leading-8 text-[var(--muted)]">
+                          {t.text}
+                        </p>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              ) : section.images && section.images.length > 0 ? (
-                <div className={`grid gap-3 ${section.images.length === 2 ? "md:grid-cols-2" : "grid-cols-1"}`}>
-                  {section.images.map((src, i) => (
-                    <div key={src + i} className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-                      <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
-                        <Image src={src} alt={`${section.title} ${i + 1}`} fill className="object-contain p-3" />
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-1 gap-4">
+                    {imageItems.filter((img) => !!img.image).map((img, i) => (
+                      <div
+                        key={img.title + i}
+                        className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+                      >
+                        <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
+                          <Image
+                            src={img.image}
+                            alt={img.title}
+                            fill
+                            className="object-contain p-3"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                    {imageItems.length === 0 && textItems.length > 1 && (
+                      <div className="hidden md:block" />
+                    )}
+                  </div>
                 </div>
-              ) : null}
-            </div>
-          ))}
+              );
+            });
+          })()}
         </section>
       ) : null}
 
