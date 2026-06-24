@@ -86,20 +86,67 @@ export default async function ProjectDetailPage({
             if (current.length) groups.push(current);
 
             return groups.map((group, gIdx) => {
-              const textItems = group.filter((g) => !g.image);
-              const imageItems = group.filter((g): g is GroupItem & { image: string } => !!g.image);
+              const imageGroups = group.filter((g) => !!g.image);
+              const textOnlyGroups = group.filter((g) => !g.image);
               const [mainItem] = group;
-              const isReversed = mainItem?.reverse && imageItems.length > 0;
+
+              if (imageGroups.length > 0) {
+                const textItems = textOnlyGroups;
+                const imageItem = imageGroups[0];
+                const isReversed = !!mainItem.reverse && imageGroups.length > 0;
+
+                return (
+                  <div
+                    key={gIdx}
+                    className={`grid items-start gap-8 md:grid-cols-2 ${
+                      isReversed ? "md:[&>*:first-child]:order-2" : ""
+                    }`}
+                  >
+                    <div className="space-y-6">
+                      {textItems.map((t) => (
+                        <div key={t.title}>
+                          <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
+                            {t.title}
+                          </h2>
+                          <p className="text-lg leading-8 text-[var(--muted)]">
+                            {t.text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-1 gap-4">
+                      {imageGroups.map((img, i) => (
+                        <div
+                          key={img.title + i}
+                          className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+                        >
+                          <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
+                            <Image
+                              src={img.image!}
+                              alt={img.title}
+                              fill
+                              className="object-contain p-3"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+
+              // All-text group: split text items into two columns
+              const half = Math.ceil(textOnlyGroups.length / 2);
+              const leftItems = textOnlyGroups.slice(0, half);
+              const rightItems = textOnlyGroups.slice(half);
 
               return (
                 <div
                   key={gIdx}
-                  className={`grid items-start gap-8 md:grid-cols-2 ${
-                    isReversed ? "md:[&>*:first-child]:order-2" : ""
-                  }`}
+                  className="grid items-start gap-8 md:grid-cols-2"
                 >
-                  <div className="space-y-6">
-                    {textItems.map((t) => (
+                  <div className="space-y-10">
+                    {leftItems.map((t) => (
                       <div key={t.title}>
                         <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
                           {t.title}
@@ -110,25 +157,17 @@ export default async function ProjectDetailPage({
                       </div>
                     ))}
                   </div>
-                  <div className="grid grid-cols-1 gap-4">
-                    {imageItems.filter((img) => !!img.image).map((img, i) => (
-                      <div
-                        key={img.title + i}
-                        className="overflow-hidden rounded-2xl border border-[var(--surface-100)] bg-[var(--surface-50)] shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
-                      >
-                        <div className="relative aspect-[16/10] w-full bg-[var(--surface-50)]">
-                          <Image
-                            src={img.image}
-                            alt={img.title}
-                            fill
-                            className="object-contain p-3"
-                          />
-                        </div>
+                  <div className="space-y-10">
+                    {rightItems.map((t) => (
+                      <div key={t.title}>
+                        <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
+                          {t.title}
+                        </h2>
+                        <p className="text-lg leading-8 text-[var(--muted)]">
+                          {t.text}
+                        </p>
                       </div>
                     ))}
-                    {imageItems.length === 0 && textItems.length > 1 && (
-                      <div className="hidden md:block" />
-                    )}
                   </div>
                 </div>
               );
