@@ -3,9 +3,9 @@ export type Project = {
   title: string;
   tagline: string;
 
-  heroImage?: string; 
+  heroImage?: string;
   gallery?: string[];
-  youtubeId?: string; 
+  youtubeId?: string;
   videoSrc?: string;
   videos?: string[];
 
@@ -41,133 +41,147 @@ export const projects: Project[] = [
     slug: "api-integration",
     title: "ShopGenius – Intelligent Tech Shopping Assistant",
     tagline:
-        "Automated shopping assistant that aggregates pricing, reviews, and sentiment across platforms to deliver concise, personalized tech recommendations.",
-    heroImage: "/projects/api-integration/architecture.jpeg",
+      "Stop drowning in browser tabs. ShopGenius pulls pricing, reviews, and expert sentiment from six APIs and turns them into one clear recommendation.",
+    heroImage: "/projects/api-integration/architecture-clean.png",
     stack: [
-        "TypeScript",
-        "REST APIs",
-        "Amazon Product API",
-        "YouTube API",
-        "Best Buy API",
-        "eBay API",
-        "Google NLP",
-        "OpenAI API",
+      "TypeScript",
+      "REST APIs",
+      "Amazon Product API",
+      "YouTube API",
+      "Best Buy API",
+      "eBay API",
+      "Google NLP",
+      "OpenAI API",
+    ],
+
+    sections: [
+      {
+        title: "The Problem with Tech Shopping",
+        text:
+          "Buying a new laptop or GPU shouldn't take six hours of research. You open Amazon, then Best Buy, then Reddit, then a YouTube review — and you still aren't sure. ShopGenius was built to collapse that whole process into a single automated workflow: one product query in, one clear recommendation out.",
+        image: "/projects/api-integration/architecture.jpeg",
+      },
+      {
+        title: "How It Works",
+        text:
+          "User input is validated against the Amazon Product API first — catching bad queries before they cascade into broken downstream calls. From there, pricing data is pulled concurrently from Best Buy and eBay, YouTube review transcripts are fetched and scored with Google NLP for sentiment, and all of it gets synthesized by OpenAI into a pros-and-cons summary. Concurrent requests kept the response time tight; early validation kept the error rate low.",
+        reverse: true,
+      },
     ],
 
     overview:
-        "ShopGenius is an automated shopping assistant designed to reduce the time and effort required to research technology purchases. By aggregating pricing data, customer sentiment, and expert reviews across multiple platforms, the system generates a concise, personalized recommendation based on minimal user input.",
+      "ShopGenius is an automated shopping assistant that reduces the time and effort required to research tech purchases. It aggregates pricing, customer sentiment, and expert reviews across six platforms and generates a personalized recommendation from minimal user input.",
 
     problem:
-        "Researching technology purchases is time-consuming and fragmented. Consumers often compare prices across multiple retailers, watch review videos, and read customer feedback separately, making it difficult to reach confident decisions efficiently.",
+      "Researching tech purchases is fragmented and time-consuming. Consumers compare prices across retailers, watch review videos, and read customer feedback separately — making it hard to reach a confident decision efficiently.",
 
     solution:
-        "ShopGenius consolidates the research process into a single automated workflow. User input is validated early, relevant data is collected concurrently across multiple APIs, sentiment analysis is applied to filter noise, and a final recommendation is synthesized into a clear pros-and-cons summary.",
+      "ShopGenius consolidates the process into one automated pipeline. Input is validated early, API calls run concurrently, sentiment analysis filters noise, and OpenAI synthesizes everything into a clear summary.",
 
     outcome:
-        "The system successfully demonstrated how multiple external data sources can be orchestrated into a cohesive recommendation engine. By validating inputs early and structuring API calls efficiently, ShopGenius delivered fast, reliable, and readable outputs while reducing user research effort.",
+      "The system demonstrated how multiple external data sources can be orchestrated into a cohesive recommendation engine — fast, reliable, and readable, with minimal input required from the user.",
 
     bullets: [
-        "Designed a modular, scalable architecture for integrating multiple external APIs",
-        "Implemented concurrent API requests to minimize response time",
-        "Integrated Amazon API for product validation and query refinement",
-        "Pulled pricing and review data from Best Buy and eBay",
-        "Processed YouTube review transcripts for expert sentiment signals",
-        "Applied Google NLP to analyze sentiment and filter low-confidence opinions",
-        "Used OpenAI to synthesize heterogeneous data into human-readable summaries",
+      "Designed a modular, layered architecture for integrating six external APIs without tight coupling",
+      "Implemented concurrent API requests to minimize total response time across data sources",
+      "Used the Amazon Product API for early input validation to prevent cascading errors downstream",
+      "Fetched and compared pricing and review data from Best Buy and eBay in parallel",
+      "Processed YouTube review transcripts through Google NLP to extract sentiment signals from expert sources",
+      "Synthesized heterogeneous data into a human-readable pros-and-cons summary via OpenAI",
     ],
 
     challenges: [
-        "Managing ambiguous user queries without introducing cascading API errors",
-        "Ensuring consistency across heterogeneous data sources",
-        "Balancing response time with data completeness and reliability",
-        "Filtering noisy or low-quality reviews before summarization",
+      "Handling ambiguous user queries without triggering cascading errors across dependent API calls",
+      "Maintaining consistency across heterogeneous data sources with different formats and quality levels",
+      "Balancing response time against data completeness — not all APIs respond at the same speed",
+      "Filtering low-confidence or noisy reviews before they pollute the final recommendation",
     ],
 
     learnings: [
-        "Early validation reduces downstream complexity and error propagation",
-        "Concurrency is critical when orchestrating multiple external APIs",
-        "Clear data flow design improves both system reliability and debuggability",
-        "Effective system design requires balancing technical execution with coordination and planning",
+      "Early input validation dramatically reduces downstream complexity — catching bad data at the source is always cheaper",
+      "Concurrency is essential when orchestrating multiple external APIs; sequential calls compound latency",
+      "Clean data flow design pays off in both reliability and debuggability when things go wrong",
+      "Good system design is as much about coordination and planning as it is about implementation",
     ],
- },
+  },
 
- {
+  {
     slug: "ai-project",
     title: "Predicting Future U.S. Unemployment Rates",
     tagline:
-        "Time-series forecasting of monthly U.S. unemployment using statistical baselines and deep learning models under strict time-aware evaluation.",
+      "Can deep learning beat a naïve baseline on one of the most persistent time series in macroeconomics? We built the pipeline to find out.",
     heroImage: "/projects/ai-project/forecast-plot.jpg",
     stack: [
-        "Python",
-        "Time-Series Forecasting",
-        'Data Engineering',
-        "ARIMA / SARIMA",
-        "MLP",
-        "LSTM",
-        "GRU",
-        "TensorFlow / Keras",
-        "Keras Tuner",
-        "Pandas",
-        "statsmodels",
-        "Bayesian Optimization",
+      "Python",
+      "Time-Series Forecasting",
+      "Data Engineering",
+      "ARIMA / SARIMA",
+      "MLP",
+      "LSTM",
+      "GRU",
+      "TensorFlow / Keras",
+      "Keras Tuner",
+      "Pandas",
+      "statsmodels",
+      "Bayesian Optimization",
     ],
 
     overview:
-        "This project evaluated how effectively statistical and deep learning models can forecast monthly U.S. unemployment rates using a unified macroeconomic dataset spanning multiple decades. Classical baselines were compared against neural approaches under realistic, time-aware evaluation to assess both accuracy and generalization.",
+      "This project evaluated how well statistical and deep learning models can forecast monthly U.S. unemployment rates. Classical baselines were compared against neural approaches under time-aware evaluation to assess both accuracy and real-world generalization.",
 
     problem:
-        "Unemployment time series are slow-moving, highly autocorrelated, and heavily influenced by unpredictable economic shocks. These properties make short-term forecasting difficult and limit the effectiveness of increasingly complex models, especially when dataset size is constrained.",
+      "Unemployment series are slow-moving, highly autocorrelated, and disrupted by economic shocks that are inherently hard to predict. These properties make short-term forecasting difficult and limit how much more complex models can actually help.",
 
     solution:
-        "A structured forecasting pipeline was built beginning with classical ARIMA and SARIMA baselines, followed by progressively more expressive neural models. Additional macroeconomic indicators were incorporated to provide broader economic context, while careful preprocessing and chronological dataset splitting ensured realistic evaluation.",
+      "We built a structured forecasting pipeline starting with ARIMA and SARIMA baselines, then progressing through MLP, LSTM, and GRU architectures. Additional macroeconomic indicators provided broader context, and every split was strictly chronological to prevent data leakage.",
 
     outcome:
-        "Recurrent neural networks produced the strongest overall forecasts, with an optimized GRU model achieving the best balance between responsiveness and generalization. While improvements over naïve baselines were modest, the GRU consistently tracked long-term trends more reliably than other approaches.",
+      "An optimized GRU achieved the best balance of responsiveness and generalization. Improvements over naïve baselines were modest — a result that turned out to be the most interesting finding of the project.",
 
     bullets: [
-        "Compiled a unified macroeconomic dataset from multiple U.S. labor and economic indicators",
-        "Aligned mixed-frequency data to a consistent monthly timeline without dropping observations",
-        "Engineered lagged features representing up to 12 months of prior economic conditions",
-        "Trained and evaluated ARIMA, SARIMA, MLP, LSTM, and GRU models",
-        "Applied strict chronological train/validation/test splits to prevent data leakage",
-        "Performed hyperparameter tuning to balance model complexity and generalization",
+      "Compiled a unified macroeconomic dataset from multiple U.S. labor and economic indicator sources",
+      "Aligned mixed-frequency data to a consistent monthly timeline without dropping observations",
+      "Engineered lagged features representing up to 12 months of prior economic conditions",
+      "Trained and evaluated ARIMA, SARIMA, MLP, LSTM, and GRU models on the same dataset",
+      "Enforced strict chronological train/validation/test splits to prevent any form of data leakage",
+      "Applied Bayesian hyperparameter optimization via Keras Tuner across both recurrent architectures",
     ],
 
     challenges: [
-        "Highly persistent unemployment series limited achievable forecast improvements",
-        "Non-stationarity and economic shocks reduced short-term predictability",
-        "Deep learning models were sensitive to over-parameterization given dataset size",
-        "Outperforming naïve baselines proved difficult despite increased model complexity",
+      "A highly persistent series meant achievable improvements over simple baselines were inherently small",
+      "Non-stationarity and economic shocks made short-term predictability fundamentally limited",
+      "Deep learning models were prone to over-parameterization given the dataset size",
+      "Outperforming naïve baselines proved difficult — the data characteristics constrained results more than architecture did",
     ],
 
     learnings: [
-        "Model performance is often constrained more by data characteristics than architecture choice",
-        "In macroeconomic forecasting, realism and generalization matter more than marginal accuracy gains",
-        "Recurrent models benefit from careful regularization and sequence-length tuning",
-        "Thorough preprocessing and evaluation design are critical for meaningful results",
+      "Model performance is often bottlenecked by data characteristics, not architecture — more complexity doesn't always help",
+      "In macroeconomic forecasting, generalization and realism matter far more than chasing marginal accuracy gains",
+      "Recurrent models benefit from careful regularization and sequence-length tuning — defaults rarely work well",
+      "Rigorous preprocessing and evaluation design are what make results actually meaningful",
     ],
 
-  sections: [
-    {
-      title: "Problem & Approach",
-      text:
-        "Predicting monthly U.S. unemployment is notoriously difficult: the series is slow-moving, persistent, and highly sensitive to economic shocks that are by definition hard to predict. The project framed this as a time-aware forecasting problem, requiring every model to be evaluated on strictly chronological train/validation/test splits — no random shuffling, no data leakage.",
-      image: "/projects/ai-project/forecast-plot.jpg",
-    },
-    {
-      title: "Model Development & Hyperparameter Optimization",
-      text:
-        "A structured pipeline was built in four stages: ARIMA and SARIMA baselines, a stateless MLP, then two recurrent architectures (LSTM and GRU) with lagged window sequences. Both recurrent models went through a second pass of Bayesian hyperparameter optimization via Keras Tuner, narrowing the search space around the best-performing 64 -> 32 unit two-layer architecture with modest dropout and a 1e-3 learning rate.",
-      image: "/projects/ai-project/hpo-gru.jpg",
-      reverse: true,
-    },
-  ],
+    sections: [
+      {
+        title: "The Forecasting Challenge",
+        text:
+          "Monthly U.S. unemployment is notoriously hard to predict: it's slow-moving, highly persistent, and extremely sensitive to economic shocks that are by definition unpredictable. The project treated this as a time-aware forecasting problem from the start — every model was evaluated on strictly chronological splits, no shuffling, no leakage. The question wasn't just 'can we build a model,' it was 'does more complexity actually help here?'",
+        image: "/projects/ai-project/forecast-plot.jpg",
+      },
+      {
+        title: "Model Pipeline & Hyperparameter Optimization",
+        text:
+          "We built a four-stage pipeline: ARIMA and SARIMA baselines first, then a stateless MLP, then LSTM and GRU with lagged window sequences. Both recurrent models went through Bayesian hyperparameter optimization with Keras Tuner, converging on a 64→32 unit two-layer architecture with modest dropout and a 1e-3 learning rate. The optimized GRU tracked long-term trends the most reliably — though beating a naïve baseline by a large margin proved harder than expected, which was the most honest result of the project.",
+        image: "/projects/ai-project/hpo-gru.jpg",
+        reverse: true,
+      },
+    ],
 
-  gallery: [
-    "/projects/ai-project/hpo-gru.jpg",
-  ],
+    gallery: [
+      "/projects/ai-project/hpo-gru.jpg",
+    ],
 
-  videos: [],
+    videos: [],
 
     links: [
       {
@@ -175,13 +189,13 @@ export const projects: Project[] = [
         href: "https://github.com/JoshSwantko/AISE-4010---Group-18-Code",
       },
     ],
- },
+  },
 
- {
+  {
     slug: "smart-focus-dock",
     title: "Smart Focus Dock",
     tagline:
-      "An embedded state-machine system that turns phone-down time into measurable focus sessions — prototyped on the DE10-SoC and proposed as an STM32 product with IR proximity sensing and OLED feedback.",
+      "An embedded focus-session device — state machine prototyped on the DE10 board via CPUlator, then redesigned as a proposed STM32 product with IR sensing and OLED feedback.",
 
     heroImage: "/projects/smart-focus-dock/hero-image.jpg",
 
@@ -192,34 +206,33 @@ export const projects: Project[] = [
     sections: [
       {
         group: 1,
-        title: "Problem & Goal",
+        title: "The Idea",
         text:
-          "Phone distractions break focus during study and work sessions. The Smart Focus Dock is a small embedded device that detects when a phone is placed on the dock, starts a timed focus session, and gives clear visual feedback on progress. If the phone stays for the full duration the session is marked complete; if it's removed early, the session is flagged as interrupted. The goal was to prototype and validate the system logic before laying out a realistic hardware implementation roadmap.",
+          "Phones are the easiest way to break your own focus. The Smart Focus Dock is a small embedded device that detects when a phone is placed on it, starts a timed session, and tracks whether you make it through. Leave the phone there — session complete. Pick it up early — session interrupted. The goal was to validate the core logic in simulation before scoping a realistic hardware path.",
       },
       {
         group: 1,
-        title: "Prototype (DE10-SoC)",
+        title: "Prototype on CPUlator",
         text:
-          "The initial prototype ran on the DE10-SoC board using switches to simulate phone presence and four LEDs to represent progress states: Idle (all off), Active (LEDs 1-4 light up progressively), Complete (all LEDs on), and Interrupted (blinking flash). A polling-loop state machine checked SW0 every cycle - pressing the switch started the session timer, releasing it early triggered the interrupted flash sequence, and holding it through all four progress steps led to completion. One bug surfaced during testing: the interrupted-state flash sequence didn't fully clear its loop variables before returning to Idle, causing leftover blink bursts after reset. Fixing the state-reset logic resolved it.",
+          "The initial prototype ran on the CPUlator ARM simulator targeting the DE10-Standard board. SW0 simulated phone presence; SW1 was a reset. The 7-segment HEX displays showed system state: HEX1 displayed P (focus active), C (complete), or E (interrupted), while HEX0 stepped through 1–4 as the session progressed. A polling-loop state machine checked SW0 each cycle. One bug surfaced: the interrupted flash sequence failed to clear its loop counter before returning to Idle, causing phantom blink bursts on reset. Isolating and fixing the state-reset path resolved it.",
       },
       {
         group: 2,
-        title: "Transition: Prototype to Product",
+        title: "Moving Toward a Real Product",
         text:
-          "Three upgrades were planned to move toward a real consumer device. First, the pushbutton was replaced with an IR proximity sensor (Sharp GP2Y0A21YK0F) connected to the STM32's ADC for actual phone-presence detection. Second, the software-delay timer was upgraded to the STM32's hardware timer peripheral so the processor remains responsive while tracking elapsed time. Third, the LED-only interface was replaced with an SSD1306 OLED driven over I2C, displaying session time, live countdown, and completion/interrupted prompts. An added Timer Setup state lets users select session durations via GPIO buttons before the session begins.",
+          "Three upgrades were planned to take this from a simulated prototype to a real desk device. First, SW0 gets replaced with a Sharp GP2Y0A21YK0F IR proximity sensor wired to the STM32's ADC — actual phone detection instead of a button press. Second, the software delay loop that blocks the CPU gets replaced with a hardware timer peripheral firing every 1 second. Third, the HEX displays get replaced with an SSD1306 OLED over I2C, showing a live countdown, session duration, and state prompts. A new Timer Setup state lets users set duration before starting.",
       },
       {
         group: 2,
-        title: "STM32 Software Architecture",
+        title: "STM32 Architecture",
         text:
-          "The proposed final implementation shifts from polling to an interrupt-driven design: the IR sensor connects to an external GPIO interrupt so phone placement and removal are handled instantly, timer-selection buttons use GPIO interrupts, and a hardware timer fires every 1 second to update the countdown without blocking the CPU. The state machine expands to five states - Idle -> Timer Setup -> Focus Active -> Session Complete / Session Interrupted -> back to Idle - with each state managed by a dedicated module (Input, Timer, State Machine, Display).",
+          "The proposed STM32 implementation shifts from polling to interrupt-driven design throughout. Phone placement and removal trigger an external GPIO interrupt immediately. Timer-selection buttons do the same. The hardware timer ISR updates the countdown every second without blocking anything else. The state machine expands from four states to five — Idle → Timer Setup → Focus Active → Complete / Interrupted → Idle — with each state managed by a dedicated software module: Input, Timer, State Machine, and Display.",
       },
     ],
 
     stack: [
-      "C",
       "Embedded C",
-      "ARM Cortex-A9 (DE10-SoC)",
+      "ARM Cortex-A9 (DE10 / CPUlator)",
       "STM32",
       "GPIO",
       "Hardware Timers",
@@ -233,39 +246,40 @@ export const projects: Project[] = [
     ],
 
     overview:
-      "The Smart Focus Dock is an embedded productivity device that helps users resist phone distractions during focus sessions. Built across a structured prototyping cycle, it was first validated on the DE10-SoC board using a polling-based state machine, then redesigned as a proposed STM32 product with interrupt-driven input handling, hardware timers, and an OLED display.",
+      "The Smart Focus Dock is an embedded productivity device that detects phone placement and runs timed focus sessions with visual feedback. It was prototyped in CPUlator targeting the DE10 board, then redesigned as a proposed STM32 product with interrupt-driven input, hardware timers, and an OLED display.",
 
     problem:
-      "Phone interruptions during study or work reduce productivity by breaking sustained focus. The system needed reliable phone detection, accurate elapsed-time tracking, clear progress feedback, and low power consumption without adding complexity that would make the device impractical as a desk accessory.",
+      "Phone interruptions break sustained focus during work and study. The system needed reliable phone detection, accurate elapsed-time tracking, clear progress feedback, and low power consumption — without being so complex it becomes impractical as a desk accessory.",
 
     solution:
-      "A layered design approach was used: prototype-first on the DE10-SoC to validate the state-machine logic with simulated input, then a proposed STM32 implementation with a real IR proximity sensor, hardware timer interrupts, and an OLED display. The shift from software delays and polling to hardware timers and external interrupts preserved the core logic while making the final design responsive, accurate, and power-efficient.",
+      "Prototype-first on CPUlator to validate state-machine logic with simulated inputs, then a proposed STM32 implementation with a real IR sensor, hardware timer interrupts, and OLED display. Shifting from polling to interrupts and from software delays to hardware timers preserved the core logic while making the final design responsive and power-efficient.",
 
     outcome:
-      "The four-state prototype was successfully demonstrated on the DE10-SoC, correctly handling focus-start, progress tracking, completion, and interruption. A state-loop bug in the interrupted sequence was identified through lab testing and corrected. The proposed STM32 redesign provides a clear and realistic path to a functional physical product.",
+      "The four-state CPUlator prototype correctly handled focus-start, progress tracking, completion, and interruption. A state-reset bug in the interrupted sequence was identified and fixed. The proposed STM32 redesign provides a clear path to a functional physical product.",
 
     bullets: [
-      "Designed and validated a four-state embedded state machine (Idle, Active, Complete, Interrupted) on the DE10-SoC platform",
-      "Used switches to simulate phone presence and four LEDs as a visual progress indicator across four timed steps",
-      "Identified and resolved a state-loop variable bug where the interrupted flash sequence continued blinking after reset",
-      "Proposed an IR proximity sensor (Sharp GP2Y0A21YK0F) replacing the prototype switch for real-world phone detection",
-      "Sketched a five-state STM32 implementation adding Timer Setup with interrupt-driven GPIO and hardware timer peripherals",
-      "Structured final software into modular Input, Timer, State Machine, and Display units for clean extension",
-      "Selected STM32 over MSP430 and the DE10 ARM Cortex-A9 as the balanced choice for cost, power, and peripheral support",
+      "Implemented a four-state state machine (Idle, Active, Complete, Interrupted) in Embedded C targeting the DE10 via CPUlator",
+      "Used SW0 and SW1 (switches) to simulate phone presence and reset; HEX0/HEX1 (7-segment) for state and progress display",
+      "Identified and fixed a state-reset variable bug causing phantom blink bursts in the interrupted-state flash sequence",
+      "Proposed an IR proximity sensor (Sharp GP2Y0A21YK0F) connected to the STM32 ADC for real phone detection",
+      "Designed a five-state STM32 implementation with a new Timer Setup state and interrupt-driven GPIO throughout",
+      "Replaced software delay timing with a hardware timer peripheral that fires an ISR every 1 second",
+      "Structured the final software into four modular units: Input, Timer, State Machine, and Display",
+      "Chose STM32 over MSP430 and the DE10 Cortex-A9 based on peripheral support, cost, and power efficiency",
     ],
 
     challenges: [
-      "Validating phone-detection logic without a real sensor - pushbutton is a limited stand-in for IR presence detection",
-      "State-loop variable leakage caused unexpected blinking cycles after reset",
-      "Software-delay timing blocks the CPU and is unsuitable for a real-hardware implementation",
-      "Scoping the final design to stay competitive with existing focus tools while remaining buildable",
+      "Validating phone-detection behavior without a real sensor — a switch is a limited stand-in for IR presence detection",
+      "State-loop variable leakage caused unexpected blink cycles after returning to Idle from Interrupted",
+      "Software-delay timing blocks the CPU and is fundamentally unsuitable for a responsive production device",
+      "Scoping the final design to remain buildable while staying competitive with existing focus tools",
     ],
 
     learnings: [
-      "Polling loops validate logic but introduce timing fragility; hardware timers and interrupts are essential in production embedded systems",
-      "State-machine bugs often hide in reset paths - full-cycle reset testing is critical",
-      "Modular software design makes the transition from prototype board to production microcontroller much cleaner",
-      "Even simple devices benefit from an explicit roadmap so prototype decisions don't constrain the final design",
+      "Polling loops are fine for validating logic, but hardware timers and interrupts are non-negotiable in a real embedded product",
+      "State machine bugs tend to hide in reset and transition paths — testing full state cycles, not just happy paths, is essential",
+      "Modular software structure makes the jump from prototype board to production microcontroller significantly cleaner",
+      "Even a simple device benefits from an explicit roadmap — prototype decisions shouldn't constrain the final design",
     ],
 
     videos: [],
@@ -278,12 +292,11 @@ export const projects: Project[] = [
     ],
   },
 
-
   {
     slug: "pmdc-motor-modeling",
-    title: "PMDC Motor Modeling",
+    title: "PMDC Motor Modeling & Simulation",
     tagline:
-      "Mathematical modeling and virtual validation of a Permanent Magnet DC motor across open-loop and closed-loop control using MATLAB/Simulink.",
+      "Built a first-principles Simulink model of a 24V Festo DC motor and validated it across three control modes — open-loop speed, closed-loop speed, and closed-loop torque.",
     heroImage: "/projects/pmdc-motor-modeling/hero-image.jpg",
     stack: [
       "MATLAB",
@@ -291,50 +304,58 @@ export const projects: Project[] = [
       "PWM",
       "H-Bridge",
       "PI Control",
-      "DC Motor Festo",
+      "DC Motor (Festo)",
       "Power Electronics",
     ],
 
+    sections: [
+      {
+        title: "Modeling from First Principles",
+        text:
+          "The Festo 24V brushed DC motor was modeled in Simulink using transfer functions derived directly from its electrical and mechanical parameters — armature resistance, inductance, back-EMF constant, moment of inertia, viscous friction, and load torque. Rather than curve-fitting a single operating point, the goal was a consistent model structure that could hold up across three distinct control scenarios without being re-derived each time.",
+        image: "/projects/pmdc-motor-modeling/hero-image.jpg",
+      },
+      {
+        title: "Three Control Scenarios",
+        text:
+          "The same model was validated under open-loop duty-cycle speed control, closed-loop PI speed control, and closed-loop PI torque control. PI gains were tuned iteratively in Simulink against published excitation-test data, and cross-checked using analytical PI design equations. Open-loop testing confirmed expected speed-to-duty linearity; the closed-loop speed controller reduced steady-state error under varying loads; the torque loop maintained consistent output during simulated loading.",
+        reverse: true,
+      },
+    ],
+
     overview:
-      "The goal was to build a mathematical model of a Festo 24 V brushed DC motor and validate it in Simulink using the motor excitation test data. Three scenarios were evaluated: open-loop duty-cycle speed control, closed-loop PI speed control, and closed-loop PI torque control under varying load conditions.",
+      "The goal was to build a mathematical model of a Festo 24V brushed DC motor and validate it in Simulink against published excitation-test data. Three scenarios were evaluated: open-loop duty-cycle speed control, closed-loop PI speed control, and closed-loop PI torque control under varying load conditions.",
 
     problem:
-      "Predicting PMDC motor behaviour across different operation modes requires a consistent modelling approach that captures electrical, mechanical, and load-dependent non-linearities. A model that only fits one scenario breaks down under different operating conditions, so the team needed a structure that could be updated consistently across open-loop, speed, and torque control cases.",
+      "Predicting PMDC motor behavior across multiple operation modes requires a model structure that captures electrical, mechanical, and load-dependent non-linearities consistently. A model that only fits one scenario breaks down under different conditions — the challenge was building one that could be updated coherently across all three.",
 
     solution:
-      "The motor was modelled in Simulink using transfer functions derived from the motor's electrical (armature resistance, inductance, back-EMF constant) and mechanical parameters (moment of inertia, viscous friction, load torque). Current, speed, and position loops were wrapped with PI controllers whose gains were tuned iteratively in Simulink, then cross-checked against the motor datasheet test data.",
+      "The motor was modeled in Simulink using transfer functions derived from datasheet parameters. PI controllers were wrapped around current, speed, and position loops, with gains tuned iteratively in Simulink and cross-checked against analytical PI equations.",
 
     outcome:
-      "The update-to-date Simulink model successfully matched the published excitation-test results in the neighbourhood-uncertain region. Open-loop duty-cycle control showed the expected speed-to-duty linearity, the closed-loop speed controller reduced steady-state error under varying load, and the torque-control loop delivered consistent torque output during simulated loading. The model's validation matched the reference curve, and the report's final model met the project spec.",
+      "The Simulink model successfully matched the published excitation-test results. All three control scenarios validated correctly — open-loop linearity, closed-loop speed accuracy under load, and consistent torque output during simulated loading.",
 
     bullets: [
-      "Derived transfer functions for the Festo 24 V PMDC motor from armature electrical and mechanical parameters",
-      "Built initial Simulink model from first principles and matched it to the excitation-test published dataset",
+      "Derived transfer functions for the Festo 24V PMDC motor from first-principles electrical and mechanical parameters",
+      "Built and parameterized a Simulink model matched against the published excitation-test dataset",
       "Evaluated open-loop duty-cycle speed control and characterized speed-to-duty linearity",
-      "Implemented closed-loop PI speed controller tuned for steady-state accuracy under varying load",
-      "Designed a closed-loop PI torque-control loop for consistent torque output during loading",
-      "Used iterative Simulink tuning and analytical PI equations to align the three scenarios into a single consistent model",
+      "Implemented and tuned a closed-loop PI speed controller for steady-state accuracy under varying load",
+      "Designed a closed-loop PI torque-control loop for consistent torque output during simulated loading",
+      "Used iterative Simulink tuning paired with analytical PI design equations to keep all three scenarios consistent",
     ],
 
     challenges: [
-      "Motor non-linearity near zero made small-signal PI tuning unstable at very low speeds",
-      "Load variations shifted the operating point and required separate PI gain sets for different control loops",
-      "Simulink solver step-size affected numerical noise in position and acceleration signals",
-      "Reconciling the project model with the published datasheet curve required normalizing parameter scales",
+      "Motor non-linearity near zero speed made small-signal PI tuning unstable at very low speeds",
+      "Load variations shifted the operating point and required separate PI gain consideration for each control loop",
+      "Simulink solver step-size introduced numerical noise into position and acceleration signals",
+      "Reconciling the simulation model with the published datasheet curve required careful parameter normalization",
     ],
 
     learnings: [
-      "A first-principles Simulink model is more generalizable than curve-fitting one operating point",
-      "PI controller performance is tightly coupled to sampling rate, solver step, and load assumptions",
-      "Iterative simulation tuning in Simulink is more productive when paired with analytical PI design equations",
-      "Motor modeling naturally spans three control domains (current/speed/torque) that must stay consistent with each other",
-    ],
-
-    links: [
-      {
-        label: "Course Folder",
-        href: "https://github.com/kayladipaolo/PMDC-Motor-Modeling",
-      },
+      "A first-principles model generalizes far better than curve-fitting a single operating point — it holds up when conditions change",
+      "PI controller performance is tightly coupled to sampling rate, solver step size, and load assumptions — getting one wrong cascades",
+      "Iterative Simulink tuning is most effective when anchored by analytical PI design equations, not guesswork",
+      "Motor modeling spans three control domains (current, speed, torque) that must stay internally consistent — you can't tune them in isolation",
     ],
   },
 
@@ -342,7 +363,7 @@ export const projects: Project[] = [
     slug: "crank-slider-pneumatic",
     title: "Crank-Slider Pneumatic Engine",
     tagline:
-      "Synthesized, CAD-modelled, and three-way validated a crank-slider mechanism for a reciprocating pneumatic engine — matching SolidWorks simulation against MATLAB loop-closure and hand graphical analysis.",
+      "Designed a crank-slider mechanism for a reciprocating air compressor from scratch — synthesized in SolidWorks, verified analytically in MATLAB, and cross-checked by hand.",
     heroImage: "/projects/crank-slider-pneumatic/overall-view.jpg",
     gallery: [
       "/projects/crank-slider-pneumatic/front-side-view.jpg",
@@ -356,22 +377,22 @@ export const projects: Project[] = [
     ],
     sections: [
       {
-        title: "Design Goal & Synthesis",
+        title: "Design & Synthesis",
         text:
-          "The goal was to synthesize a crank-slider linkage in SolidWorks that converts rotational motion into linear reciprocating motion for a reciprocating air compressor. Loop-closure geometry and vector algebra set the crank radius at 10 mm and the coupler at 72.8 mm, satisfying Grashof's law for continuous rotation. The piston has dual air ports (inlet right, outlet left, 20 mm apart), and a 20 mm flywheel smooths torque fluctuations.",
+          "The goal was to synthesize a crank-slider linkage that converts continuous rotation into linear reciprocating motion for a pneumatic air compressor. Vector loop-closure equations driven by the piston port positions set the crank at 10 mm and the coupler at 72.8 mm — satisfying Grashof's law for full continuous rotation. A 20 mm flywheel was added to smooth torque fluctuations, and a dual-port cylinder (inlet right, outlet left, 20 mm apart) was designed for symmetric intake and exhaust.",
         image: "/projects/crank-slider-pneumatic/overall-view.jpg",
       },
       {
-        title: "Kinematic Validation — Three Methods",
+        title: "Three-Method Kinematic Validation",
         text:
-          "Motion was analyzed at a constant 20 rad/s input using SolidWorks Motion Analysis, analytical Loop Closure (MATLAB), and a hand Graphical Vector Analysis drawn to scale. Position, velocity, and acceleration were compared. Piston velocity showed excellent agreement — average cross-method error 0.80 %. Acceleration errors up to ~26 % were from numerical differentiation noise in simulation, making the smooth MATLAB analytical result the more reliable reference. Overall average error 10.29 % confirms the assembly is kinematically sound.",
+          "Kinematics were analyzed at a constant 20 rad/s input using three independent methods: SolidWorks Motion Analysis, MATLAB loop-closure equations, and a hand-drawn graphical vector analysis. Piston velocity showed excellent agreement — average cross-method error of 0.80%. Acceleration errors ran up to ~26%, traced to numerical noise from differentiating discrete simulation data; the smooth MATLAB analytical curve was the more reliable reference. Overall average error of 10.29% confirmed the assembly is kinematically sound.",
         image: "/projects/crank-slider-pneumatic/front-side-view.jpg",
         reverse: true,
       },
       {
         title: "Key Design Decisions",
         text:
-          "Targeted decisions: (1) zero offset between crank and piston axes for 1:1 timing; (2) cylinder pivot placed 35 mm above the crank line to minimise angular sweep and sliding contact; (3) all links sized 10–100 mm to reduce weight and wear; (4) dual-port cylinder doubled inlet/exhaust window over single-port. SolidWorks interference checking confirmed no collisions across full piston travel.",
+          "Zero offset between crank and piston axes for 1:1 timing. Cylinder pivot placed 35 mm above the crank line to minimize angular sweep and sliding contact. All links sized 10–100 mm to reduce weight and wear. Dual-port cylinder doubles the inlet/exhaust window over a single-port design. SolidWorks interference checking confirmed no collisions across full piston travel.",
       },
     ],
     stack: [
@@ -384,37 +405,37 @@ export const projects: Project[] = [
       "Pneumatic Systems",
       "Flywheel Design",
       "Mechanism Design",
-      "MBD (SolidWorks Motion Analysis)",
+      "SolidWorks Motion Analysis",
     ],
     overview:
-      "This project was the complete design of a crank-slider mechanism for a reciprocating pneumatic air compressor. The team synthesised linkage geometry from first principles, built a full 7-component SolidWorks assembly (crank, coupler, piston, cylinder, flywheel, additional shaft, frame), and validated kinematic outputs against two independent analytical methods.",
+      "Complete design of a crank-slider mechanism for a reciprocating pneumatic air compressor. Linkage geometry was synthesized from first principles, a full 7-component SolidWorks assembly was built, and kinematic outputs were validated against two independent analytical methods.",
     problem:
-      "Designing a mechanism that satisfies Grashof's law for continuous rotation, the 10–100 mm link constraint, precise piston-to-port alignment, and verifiable outputs required rigorous geometric synthesis. Comparing simulation against analytical results without standardised sign and time conventions added further complexity.",
+      "The mechanism had to satisfy Grashof's law, a 10–100 mm link constraint, precise piston-to-port alignment, and produce verifiable kinematic outputs. Comparing simulation against analytical results across methods with different sign and time conventions added further complexity.",
     solution:
-      "The linkage was synthesised via vector loop-closure equations driven by inlet/outlet port positions: crank 10 mm, coupler 72.8 mm, zero offset. SolidWorks Motion Study exported time-series; MATLAB loop-closure code and hand graphical construction provided independent checks, with outputs mapped to absolute-value magnitudes against a shared angular baseline to resolve sign convention differences.",
+      "Linkage synthesized via vector loop-closure equations from port positions: crank 10 mm, coupler 72.8 mm, zero offset. SolidWorks Motion Study exported time-series data; MATLAB loop-closure code and hand graphical construction provided independent checks, with all outputs mapped to absolute-value magnitudes to resolve sign convention differences.",
     outcome:
-      "Piston velocity showed excellent agreement (0.80 % average error). Acceleration errors reached ~26 %, traced to numerical noise from differentiating discrete velocity steps. Loop Closure had the lowest overall error (9.75 % vs 11.09 % graphical), making it the most reliable verification approach. The assembly was confirmed dimensionally correct and kinematically sound.",
+      "Piston velocity agreement was excellent (0.80% average error). Acceleration errors reached ~26%, traced to numerical differentiation noise. MATLAB loop closure had the lowest overall error (9.75% vs 11.09% graphical), making it the most reliable verification method.",
     bullets: [
-      "Synthesised linkage to satisfy Grashof's law and the 10-100 mm sizing constraint",
-      "Selected a 10 mm crank radius and 72.8 mm coupler via vector loop closure",
-      "Designed a dual-port cylinder aligned with frame openings for symmetric intake and exhaust",
-      "Built and interference-checked a full 7-component SolidWorks assembly",
-      "Applied a 20 mm flywheel to increase rotational inertia",
-      "Implemented a 40-line MATLAB script for analytical loop-closure kinematics",
-      "Conducted hand Graphical Vector Analysis (velocity and acceleration polygons at leftmost crank extreme) as an independent check",
-      "Compared SolidWorks Motion, MATLAB loop-closure, and graphical results — overall average error 10.29 %",
+      "Synthesized a crank-slider linkage satisfying Grashof's law and a 10–100 mm sizing constraint via vector loop closure",
+      "Selected 10 mm crank radius and 72.8 mm coupler length from port position geometry",
+      "Designed a dual-port cylinder with symmetric inlet and exhaust openings aligned to the frame",
+      "Built and interference-checked a full 7-component SolidWorks assembly across the complete piston travel",
+      "Added a 20 mm flywheel to increase rotational inertia and smooth torque output",
+      "Implemented a MATLAB loop-closure script for independent analytical kinematic verification",
+      "Conducted hand Graphical Vector Analysis (velocity and acceleration polygons at leftmost crank extreme)",
+      "Compared all three methods — overall average error 10.29%, with velocity agreement at 0.80%",
     ],
     challenges: [
-      "SolidWorks and MATLAB used opposite sign conventions — resolved by mapping outputs to absolute values",
-      "Acceleration from differentiating discrete simulation data amplifies noise to ~26% error vs analytical",
-      "Sizing piston port curve radius for adequate airflow while keeping ports inside layout constraints",
+      "SolidWorks and MATLAB used opposite sign conventions — resolved by mapping outputs to absolute-value magnitudes",
+      "Differentiating discrete simulation data amplified noise in acceleration results to ~26% vs the analytical reference",
+      "Sizing piston port curve radius for adequate airflow while keeping ports within tight layout constraints",
       "Hand graphical construction required consistent polygon scale across position, velocity, and acceleration diagrams",
     ],
     learnings: [
-      "Loop Closure with MATLAB is the most reliable method — 9.75% avg error vs 11.09% for graphical",
-      "Differentiation of discrete simulation data amplifies noise; analytical solutions give cleaner theoretical reference curves",
-      "SolidWorks Motion Study is ideal for qualitative observation but requires stringent time-step control for quantitative use",
-      "First-principles synthesis produces explainable, defensible designs rather than relying on iterative trial-and-error",
+      "MATLAB loop closure is the most reliable kinematic verification method here — 9.75% avg error vs 11.09% for graphical",
+      "Differentiating discrete data amplifies noise significantly; use analytical solutions for any quantitative comparison",
+      "SolidWorks Motion Study is excellent for visualizing motion but needs tight time-step control for quantitative accuracy",
+      "First-principles synthesis produces designs that are explainable and defensible — not just things that happened to work",
     ],
     links: [
       {
@@ -426,10 +447,9 @@ export const projects: Project[] = [
 
   {
     slug: "autonomous-robot",
-    title: "Autonomous Scavenger Robot",
+    title: "Autonomous Scavenger Robot – BUMBLEBEE",
     tagline:
-        "Fully autonomous robot using state-based control and multi-sensor integration to identify, collect, and return target objects in an unmarked environment.",
-    // youtubeId: "PASTE_VIDEO_ID_HERE", // optional
+      "Designed and built BUMBLEBEE: a fully autonomous robot that explores an unmarked arena, sorts gems by color, collects only the green ones, and returns home to deposit them — no human input, no predefined path.",
     heroImage: "/projects/autonomous-robot/robot-iso.jpg",
     gallery: [
       "/projects/autonomous-robot/robot-iso.jpg",
@@ -443,259 +463,281 @@ export const projects: Project[] = [
       "/projects/autonomous-robot/demo-4.mp4",
     ],
     stack: [
-        "ESP32",
-        "Embedded C/C++",
-        "Circuit Design",
-        "Ultrasonic Sensor",
-        "IR Beacon",
-        "Color Sensor",
-        "Encoders",
+      "ESP32-WROOM-32",
+      "Arduino / Embedded C++",
+      "TCS34725 Color Sensor",
+      "HR-SR04 Ultrasonic",
+      "IR Beacon (TSOP32238)",
+      "Quadrature Encoders",
+      "MX1508 Motor Driver",
+      "Servo Actuation",
+      "Circuit Design",
+      "SolidWorks CAD",
+    ],
+
+    sections: [
+      {
+        title: "The Mission",
+        text:
+          "BUMBLEBEE had to navigate an unmarked arena, detect and sort incoming gems by color, collect only the green ones, and return to home base to deposit them — all within a strict time limit and without any external guidance. The arena had no predefined paths, lighting varied across the floor, and the robot had to make every navigation and sorting decision onboard in real time.",
+        image: "/projects/autonomous-robot/robot-top.jpg",
+      },
+      {
+        title: "Sorting, Collection & Homing",
+        text:
+          "A TCS34725 color sensor continuously read raw RGBC values as objects entered the intake. After extensive calibration, green gems were identified within a tight window (R: 16–20, G: 18–23, B: 11–14) and routed by a servo-driven sorting arm to the collection bucket; non-green gems were deflected. After traveling ~100 cm in collection mode, the robot stopped, reversed, and entered deposit mode — spinning in place listening on UART2 at 2400 baud for the IR beacon's 'U' signal. Once three consecutive detections confirmed alignment, the robot drove backward and used the ultrasonic sensor to stop within 2 cm of the base before dumping the bucket.",
+        image: "/projects/autonomous-robot/board-circuit.jpg",
+        reverse: true,
+      },
     ],
 
     overview:
-        "This project involved designing and building a fully autonomous scavenger robot capable of exploring an unmarked environment, identifying only green target objects, collecting them, and returning to a home base within a strict time limit. The system was built around an ESP32 microcontroller and required tight integration of sensing, actuation, and control logic under constraints on size, power, cost, and reliability.",
+      "BUMBLEBEE is a fully autonomous scavenger robot built for MSE 2202. It explores an unmarked arena, identifies green target gems using a color sensor with calibrated RGBC thresholds, collects them via a servo-driven sorting mechanism, then navigates home using an IR beacon and deposits using a bucket servo.",
 
     problem:
-        "Achieving reliable autonomy in a real-world environment proved non-trivial due to sensor noise, wheel drift, lighting variation, and surface inconsistency. Without external guides or predefined paths, the robot had to make all navigation and decision-making choices onboard in real time.",
+      "Real-world autonomy is non-trivial: color sensor readings shift with lighting, wheel drift accumulates over distance, and the IR beacon signal is noisy without confirmation logic. Every decision had to be made onboard under tight time and power constraints.",
 
     solution:
-        "A state-based control architecture was implemented to break complex autonomous behavior into clear, modular states. Navigation, object identification, collection, and homing were each handled independently, allowing behavior to remain predictable and tunable despite environmental uncertainty.",
+      "A multi-stage state machine drove the robot through collection, return, IR lock, ultrasonic approach, and deposit phases. Tight RGBC calibration windows replaced normalized ratios for green detection. IR homing used a 3-detection consensus threshold before committing to reverse approach, eliminating false triggers from beacon reflections.",
 
     outcome:
-        "The completed system successfully demonstrated full autonomous operation, reliably identifying and collecting green objects and returning to the home base within the required time limit. Sensor prioritization and iterative calibration significantly improved consistency across different environments.",
+      "The robot successfully demonstrated full autonomous operation — collecting green gems and returning home to deposit within the time limit. Iterative sensor calibration and the multi-detection IR lock were the biggest factors in achieving consistent runs.",
 
     bullets: [
-        "Designed a state-based control system to manage exploration, identification, collection, homing, and deposit behaviors",
-        "Integrated ultrasonic, infrared, color, and encoder sensors into a unified decision-making pipeline",
-        "Mitigated wheel drift by prioritizing infrared beacon alignment during homing",
-        "Calibrated color sensor thresholds to reliably distinguish green targets under varying lighting conditions",
-        "Optimized intake geometry to improve collection reliability without complex mechanical actuation",
+      "Built a multi-stage autonomous state machine: standby → collection → return → IR lock → ultrasonic approach → deposit",
+      "Calibrated TCS34725 color sensor to a tight RGBC window (R:16–20, G:18–23, B:11–14) for reliable green detection under varying arena lighting",
+      "Implemented servo-driven sorting arm with three positions: test, accept (green), and reject (not green)",
+      "Used TSOP32238 IR receiver on UART2 at 2400 baud with a 3-consecutive-detection threshold for robust home-base locking",
+      "Homed to base using IR alignment then switched to HR-SR04 ultrasonic for final close-range approach (stop within 2 cm)",
+      "Tracked distance with dual quadrature encoders (1096 counts/rev) for dead-reckoning and turn control",
+      "Designed and assembled full custom circuit using ESP32-WROOM-32 and MX1508 dual motor driver",
+      "Built robot chassis in SolidWorks and integrated all mechanical and electrical systems",
     ],
 
     challenges: [
-        "Accumulated wheel drift caused inconsistent homing behavior",
-        "Lighting and floor surface variations affected color sensor accuracy",
-        "Sensor noise required careful filtering and prioritization during decision-making",
-        "Maintaining reliability under tight time and power constraints",
+      "Color sensor readings were highly sensitive to lighting angle and floor surface — static thresholds worked initially then failed in different arena zones",
+      "Wheel drift accumulated over the full collection run, causing the return path to overshoot the IR detection zone",
+      "IR beacon reflections off arena walls caused false positives — solved with a 3-consecutive-detection consensus before committing to approach",
+      "Coordinating sorting arm timing with robot motion required careful interrupt and timer management to avoid blocking the drive loop",
     ],
 
     learnings: [
-        "Real-world autonomy requires continuous calibration and testing, not static configuration",
-        "State machines provide clarity and robustness when managing complex autonomous behavior",
-        "Sensor fusion and prioritization are more effective than relying on a single data source",
-        "Mechanical simplicity can outperform complex actuation when paired with good geometry",
+      "Tight empirical RGBC thresholds outperformed normalized ratios for color detection — the simpler approach was more robust",
+      "Consensus-based sensor confirmation (3 detections before acting) is worth the latency cost when false positives cause catastrophic behavior",
+      "State machines for autonomous robots need explicit failure handling — an unchecked state transition at the wrong time can derail the entire run",
+      "Mechanical design and software are tightly coupled in robotics: the sorting arm geometry directly constrained what timing was achievable in software",
     ],
+
     links: [
-        {
+      {
         label: "GitHub Repository",
         href: "https://github.com/MSE2202/project-pdf-team-003-08",
-        },
-    ],    
- },
+      },
+    ],
+  },
 
- {
-  slug: "ros2-autonomous-vehicle",
-  title: "Autonomous ROS2 Robotics Platform",
-  tagline:
-    "Redesigned and upgraded a Freenove 4WD robot into a ROS2-based autonomous platform with custom mechanical systems, AI perception, and distributed control.",
+  {
+    slug: "ros2-autonomous-vehicle",
+    title: "Autonomous ROS2 Robotics Platform",
+    tagline:
+      "Took a basic educational robot kit and rebuilt it into a properly engineered autonomous platform — custom CAD, modular ROS2 architecture, and AI person detection.",
 
-  heroImage: "/projects/ros2-autonomous-vehicle/hero.png",
-  
-  gallery: [
-   "/projects/ros2-autonomous-vehicle/Full Assembly Cad.png",
-   "/projects/ros2-autonomous-vehicle/Gimbal head Cad.png",
-   "/projects/ros2-autonomous-vehicle/Chassis Enclosure.png",
-   "/projects/ros2-autonomous-vehicle/ROS2 Architecture Diagram.png",
-  ],
+    heroImage: "/projects/ros2-autonomous-vehicle/hero.png",
 
-  videos: [
-    "/projects/ros2-autonomous-vehicle/Live Demo_Auto Mode.mov",
-    "/projects/ros2-autonomous-vehicle/Live Demo_Manual Mode.mov",
-  ],
+    gallery: [
+      "/projects/ros2-autonomous-vehicle/Full Assembly Cad.png",
+      "/projects/ros2-autonomous-vehicle/Gimbal head Cad.png",
+      "/projects/ros2-autonomous-vehicle/Chassis Enclosure.png",
+      "/projects/ros2-autonomous-vehicle/ROS2 Architecture Diagram.png",
+    ],
 
-  sections: [
-    {
-        title: "Problem",
+    videos: [
+      "/projects/ros2-autonomous-vehicle/Live Demo_Auto Mode.mov",
+      "/projects/ros2-autonomous-vehicle/Live Demo_Manual Mode.mov",
+    ],
+
+    sections: [
+      {
+        title: "What Was Wrong with the Stock Platform",
         text:
-        "The stock Freenove 4WD platform was useful as an educational robot, but it was not reliable enough for repeated autonomous operation. The main issues were weak structural support, messy wiring, exposed battery packaging, and a cantilevered gimbal design that placed unnecessary bending stress on the servos.",
+          "The Freenove 4WD kit is great for learning, but not for actual autonomous testing. The structure flexed under load, wiring was exposed and prone to snagging, the battery pack had no housing, and the pan-tilt gimbal was cantilevered — concentrating bending stress directly on the servo splines. After a few runs, reliability became the limiting factor.",
         image: "/projects/ros2-autonomous-vehicle/Full Assembly Cad.png",
-    },
-    {
+      },
+      {
         title: "Mechanical Redesign",
         text:
-        "The robot was redesigned with custom CAD components including chassis enclosures, bumpers, cable routing, and a dual-supported pan-tilt gimbal. The goal was to make the platform more durable, easier to service, and better suited for real autonomous testing.",
+          "We redesigned the platform with custom SolidWorks CAD across four sprints. The gimbal got a dual-support architecture to distribute servo loading. Chassis enclosures organized wiring and protected electronics. Impact-resistant bumpers were added front and rear. A battery enclosure replaced the exposed pack. Everything was designed to be 3D-printable and field-serviceable.",
         image: "/projects/ros2-autonomous-vehicle/Gimbal head Cad.png",
         reverse: true,
-    },
-    {
-        title: "ROS2 System Architecture",
+      },
+      {
+        title: "ROS2 Architecture",
         text:
-        "The software was built around a modular ROS2 architecture. Separate nodes handled joystick input, manual driving, autonomous commands, mode switching, motor control, ultrasonic obstacle detection, and AI-based person detection.",
+          "The software was rebuilt from scratch as a modular ROS2 system. Separate nodes handled joystick input, manual drive commands, autonomous behavior, mode switching, motor control, ultrasonic obstacle detection, and AI-based person detection. Nodes communicated via ROS2 topics, making individual subsystems easy to develop, test, and swap out independently. Getting reliable inter-node communication between the Raspberry Pi and development workstations was the biggest software challenge.",
         image: "/projects/ros2-autonomous-vehicle/ROS2 Architecture Diagram.png",
-    },
- ],
+      },
+    ],
 
-  stack: [
-    "ROS2",
-    "Python",
-    "Raspberry Pi",
-    "Computer Vision",
-    "CAD",
-    "SolidWorks",
-    "3D Printing",
-    "Ultrasonic Sensors",
-    "Embedded Systems",
-    "Git",
-  ],
+    stack: [
+      "ROS2",
+      "Python",
+      "Raspberry Pi",
+      "Computer Vision",
+      "SolidWorks",
+      "CAD",
+      "3D Printing",
+      "Ultrasonic Sensors",
+      "Embedded Systems",
+      "Git",
+    ],
 
-  overview:
-    "This project transformed a stock Freenove 4WD educational robot into a more robust autonomous robotics platform through a combination of mechanical redesign, ROS2 software architecture, perception systems, and hardware integration. The project was completed over four development sprints and focused on improving reliability, modularity, and autonomous functionality.",
+    overview:
+      "This project transformed a stock Freenove 4WD educational robot into a robust autonomous platform through mechanical redesign, a distributed ROS2 software architecture, and integrated perception systems. Completed over four development sprints.",
 
-  problem:
-    "The original Freenove platform suffered from structural weaknesses, poor cable management, exposed battery packaging, and a cantilevered gimbal system that introduced excessive loading on servo components. The software architecture was also limited for future autonomous robotics development.",
+    problem:
+      "The original platform had structural weaknesses, poor cable management, exposed battery packaging, and a cantilevered gimbal causing servo fatigue. The software architecture was also too limited for real autonomous development.",
 
-  solution:
-    "Our team redesigned critical mechanical systems including the chassis, bumpers, battery housing, and pan-tilt gimbal while migrating the platform to a distributed ROS2 architecture. Separate nodes were used for motor control, camera perception, ultrasonic sensing, teleoperation, and autonomous decision-making. AI-based person detection and obstacle stopping were integrated into the final system.",
+    solution:
+      "We redesigned the chassis, bumpers, battery housing, and gimbal with custom SolidWorks CAD, then migrated to a distributed ROS2 architecture with separate nodes for motor control, perception, sensing, teleoperation, and autonomous decision-making.",
 
-  outcome:
-    "The completed platform successfully demonstrated manual teleoperation, autonomous navigation, obstacle avoidance, ROS2 node communication, AI-based person detection, and significantly improved structural reliability. The project provided experience across robotics software, mechanical design, embedded systems, and systems integration.",
+    outcome:
+      "The platform demonstrated manual teleoperation, autonomous navigation, obstacle avoidance, and AI-based person detection — with significantly improved structural reliability throughout.",
 
-  bullets: [
-    "Redesigned the stock pan-tilt gimbal using a dual-support architecture to reduce servo spline loading",
-    "Developed custom CAD models for chassis reinforcements, battery enclosures, and impact-resistant bumpers",
-    "Migrated the platform to a modular ROS2 distributed control architecture",
-    "Integrated joystick teleoperation using ROS2 topics and command arbitration",
-    "Implemented ultrasonic-based obstacle detection and emergency stopping",
-    "Integrated camera-based person detection for autonomous safety behavior",
-    "Performed full-system validation including wiring reliability, motion testing, and integration testing",
-    "Designed and 3D printed custom structural components to improve durability and serviceability",
-  ],
+    bullets: [
+      "Redesigned the pan-tilt gimbal with a dual-support architecture to distribute servo spline loading",
+      "Developed custom CAD models for chassis reinforcements, battery enclosures, and impact-resistant bumpers",
+      "Migrated the platform to a modular ROS2 distributed control architecture from scratch",
+      "Integrated joystick teleoperation via ROS2 topics with command arbitration between manual and autonomous modes",
+      "Implemented ultrasonic-based obstacle detection with emergency stopping behavior",
+      "Integrated camera-based AI person detection for autonomous safety response",
+      "Ran full-system validation including wiring reliability, motion testing, and integration testing",
+      "3D printed all custom structural components for durability and field serviceability",
+    ],
 
-  challenges: [
-    "Configuring ROS2 communication between Raspberry Pi hardware and development workstations",
-    "Managing mechanical load paths to eliminate cantilever-induced servo fatigue",
-    "Maintaining reliable communication between multiple ROS2 nodes",
-    "Balancing structural reinforcement with overall system weight and manufacturability",
-    "Integrating perception, control, and actuation into a single reliable system",
-  ],
+    challenges: [
+      "Configuring reliable ROS2 communication between the Raspberry Pi and development workstations across the network",
+      "Managing mechanical load paths to eliminate cantilever-induced servo fatigue in the gimbal",
+      "Keeping multiple ROS2 nodes synchronized and communicating reliably under real operating conditions",
+      "Balancing structural reinforcement with overall system weight and printability constraints",
+      "Integrating perception, control, and actuation into a single system without subsystem interference",
+    ],
 
-  learnings: [
-    "Robotics projects require tight integration across software, hardware, and mechanical systems",
-    "ROS2 provides significant advantages in modularity and scalability compared to monolithic architectures",
-    "Mechanical reliability often determines overall system performance more than software sophistication",
-    "System-level testing is critical for identifying integration failures that individual subsystems cannot reveal",
-    "Distributed robotics architectures improve maintainability and future extensibility",
-  ],
+    learnings: [
+      "Robotics projects demand tight integration across software, hardware, and mechanical — weakness in any one layer limits the whole system",
+      "ROS2's modular architecture pays off: being able to develop and test nodes independently made the project manageable",
+      "Mechanical reliability often gates overall system performance more than software does",
+      "System-level integration testing surfaces failures that isolated subsystem testing never would",
+    ],
 
-  links: [],
- },
- {
-  slug: "rps1-hand",
-  title: "Autonomous RPS-1 Mechatronic Hand",
-  tagline:
-    "Designed and built a mechatronic system that plays Rock-Paper-Scissors-Minus-One: two 3D-printed tendon-driven hands, dual ESP32 master-slave control, and a probabilistic game-theory decision engine.",
+    links: [],
+  },
 
-  heroImage: "/projects/rps1-hand/hero.jpg",
+  {
+    slug: "rps1-hand",
+    title: "Autonomous RPS-1 Mechatronic Hand",
+    tagline:
+      "Two 3D-printed tendon-driven hands, dual ESP32 controllers talking over ESP-NOW, and a game-theory algorithm that picks the winning gesture — all to play Rock-Paper-Scissors-Minus-One.",
 
-  gallery: [
-    "/projects/rps1-hand/system-architecture.jpg",
-    "/projects/rps1-hand/knuckles.jpg",
-    "/projects/rps1-hand/hand-view-1.jpg",
-    "/projects/rps1-hand/hand-view-2.jpg",
-    "/projects/rps1-hand/hand-view-3.jpg",
-    "/projects/rps1-hand/software-flowchart.jpg",
-    "/projects/rps1-hand/spool-design.jpg",
-    "/projects/rps1-hand/servo-mount.jpg",
-  ],
+    heroImage: "/projects/rps1-hand/hero.jpg",
 
-  sections: [
-    {
-      title: "System Overview",
-      text:
-        "The goal was a fully integrated mechatronic system capable of displaying two hand gestures, accepting opponent input, and autonomously removing the weaker gesture using game theory. Two 3D-printed hands are actuated by DC motors driven through an H-bridge motor driver, with cover-based retraction handled by servo motors. Two ESP32 microcontrollers communicate peer-to-peer via ESP-NOW in a master-slave configuration - the master executes strategy and controls the left hand, the slave manages the right.",
-      image: "/projects/rps1-hand/system-architecture.jpg",
-    },
-    {
-      title: "Mechanical Design",
-      text:
-        "The hands were 3D printed in separate bone-like finger segments and a single palm. Fingers are actuated through a tendon-driven system: DC motors wind nylon string wrapped around custom-designed spools with a centre groove to prevent entanglement. Elastic bands return the fingers to their default position when the motor reverses, eliminating the need for return actuators. A servo-driven cover mechanism performs the 'minus one' action - one hand is covered based on the optimal calculated move.",
-      images: [
+    gallery: [
+      "/projects/rps1-hand/system-architecture.jpg",
+      "/projects/rps1-hand/knuckles.jpg",
+      "/projects/rps1-hand/hand-view-1.jpg",
+      "/projects/rps1-hand/hand-view-2.jpg",
+      "/projects/rps1-hand/hand-view-3.jpg",
+      "/projects/rps1-hand/software-flowchart.jpg",
+      "/projects/rps1-hand/spool-design.jpg",
+      "/projects/rps1-hand/servo-mount.jpg",
+    ],
+
+    sections: [
+      {
+        title: "System Overview",
+        text:
+          "The system plays RPS-1 (Rock-Paper-Scissors-Minus-One): both hands display a gesture, the opponent reveals theirs, and the system autonomously removes the weaker of its two hands. Two 3D-printed hands are driven by DC motors through H-bridge motor drivers, with a servo-controlled cover performing the 'minus one' withdrawal. Two ESP32s communicate peer-to-peer via ESP-NOW — the master runs strategy and drives the left hand, the slave manages the right hand and cover servo.",
+        image: "/projects/rps1-hand/system-architecture.jpg",
+      },
+      {
+        title: "Mechanical Design",
+        text:
+          "Each hand was 3D printed as individual bone-like finger segments joined to a single palm. Fingers are actuated through a tendon-driven system: DC motors wind nylon string around custom grooved spools (single spool, 1 cm centre groove depth) to prevent entanglement. Elastic bands handle passive finger return when the motor reverses, eliminating the need for a second set of actuators. The cover servo physically withdraws one hand over the selected gesture.",
+        images: [
           "/projects/rps1-hand/hand-view-1.jpg",
           "/projects/rps1-hand/hand-view-2.jpg",
           "/projects/rps1-hand/hand-view-3.jpg",
         ],
-      reverse: true,
-    },
-    {
-      title: "Control & Communication Architecture",
-      text:
-        "The master ESP32 initialises the hands to paper, randomly generates two distinct gestures (PR, PS, or RS), and drives the left hand's motors directly. It then prompts the user to enter the opponent's two-character gesture string (validated character-by-character). Once confirmed, the game strategy algorithm computes the optimal hand to retain and signals the slave ESP32 via ESP-NOW to move both the right hand and the cover servo. A sequence-numbering scheme filters stale or duplicated packets to prevent desynchronisation.",
-      image: "/projects/rps1-hand/software-flowchart.jpg",
-    },
-    {
-      title: "Game Strategy & Testing",
-      text:
-        "Because both hands always display distinct gestures, the system transforms the input space into only three cases. A dedicated strategy routine compares our gestures against the opponent's and selects the hand that maximises the probability of winning. Iterative mechanical testing refined the spool design (single spool with centre groove, 1 cm depth) and calibrated motor timing constants for reliable gesture formation under real friction and tendon tension. Software fixes addressed GPIO initialisation glitches at startup, servo misalignment, and ESP-NOW peer-pairing errors.",
-      image: "/projects/rps1-hand/spool-design.jpg",
-      reverse: true,
-    },
-  ],
+        reverse: true,
+      },
+      {
+        title: "Control & Communication",
+        text:
+          "The master ESP32 initializes both hands to paper, randomly generates two distinct gestures (PR, PS, or RS), and drives its motors. The user inputs the opponent's gesture character by character; the system validates each input before accepting it. The strategy algorithm then evaluates the three-case outcome space and selects the hand with the highest win probability. It signals the slave via ESP-NOW with sequence-numbered packets to prevent desync from stale or duplicate transmissions.",
+        image: "/projects/rps1-hand/software-flowchart.jpg",
+      },
+      {
+        title: "Calibration & Testing",
+        text:
+          "Open-loop tendon control requires precise motor timing constants — small changes in friction or tension shift the gesture. Iterative bench testing refined spool geometry and timing values until gestures were consistent under real conditions. Key bugs fixed along the way: boot-time motor drift from GPIO initialization order, servo misalignment from missing explicit position initialization, and ESP-NOW peer-pairing errors that caused the slave to miss commands.",
+        image: "/projects/rps1-hand/spool-design.jpg",
+        reverse: true,
+      },
+    ],
 
-  stack: [
-    "ESP32",
-    "Embedded C/C++",
-    "ESP-NOW",
-    "DC Motor Control (H-Bridge)",
-    "Servo Motors",
-    "CAD / SolidWorks",
-    "3D Printing",
-    "Game Theory",
-    "State Machines",
-    "Master-Slave Architecture",
-  ],
+    stack: [
+      "ESP32",
+      "Embedded C/C++",
+      "ESP-NOW",
+      "DC Motor Control (H-Bridge)",
+      "Servo Motors",
+      "CAD / SolidWorks",
+      "3D Printing",
+      "Game Theory",
+      "State Machines",
+      "Master-Slave Architecture",
+    ],
 
-  overview:
-    "This project explored how a robotic system can autonomously play Rock-Paper-Scissors-Minus-One by combining tendon-driven mechanical actuation, distributed embedded control, and probabilistic decision-making. The system was built by a five-person team and completed across structured sprints with full mechanical, electrical, and software integration.",
+    overview:
+      "A fully integrated mechatronic system that plays Rock-Paper-Scissors-Minus-One using tendon-driven mechanical actuation, distributed embedded control across two ESP32s, and a probabilistic game-theory decision algorithm. Built by a five-person team across structured development sprints.",
 
-  problem:
-    "Playing RPS-1 requires both forming two physical gestures simultaneously and making a rapid strategic decision about which gesture to keep - a challenge that spans mechanical actuation, real-time control, wireless communication between two controllers, and game-theory optimisation. The open-loop tendon system introduced repeatability risks, while managing four DC motors and two servos across two boards required careful power distribution and communication reliability.",
+    problem:
+      "Playing RPS-1 requires forming two physical gestures simultaneously and making a fast strategic decision — a challenge spanning mechanical actuation, real-time control, wireless communication, and game-theory optimization. Open-loop tendon actuation introduced repeatability risk, and managing four DC motors and two servos across two boards added power and communication complexity.",
 
-  solution:
-    "A dual-ESP32 architecture was chosen for power distribution and modular control. Mechanical fingers were grouped into two tendon lines per hand driven by compact grooved spools. Servo covers handle the withdrawal gesture. The master board normalises the initial display to two distinct gestures, validates user input, and applies a three-case strategy algorithm before signalling the slave via ESP-NOW with packet sequence validation.",
+    solution:
+      "Dual-ESP32 architecture for modular control and power distribution. Fingers grouped into two tendon lines per hand driven by compact grooved spools. Master validates input, applies a three-case strategy algorithm, and signals the slave via ESP-NOW with sequence-validated packets.",
 
-  outcome:
-    "The integrated system reliably formed rock, paper, and scissors gestures, accepted validated opponent input, and autonomously selected the optimal hand to keep. Key fixes included boot-time GPIO stabilisation, explicit servo position initialisation, and ESP-NOW peer-pairing correction. The project demonstrated cross-discipline mechatronic integration including embedded communication, mechanical design iteration, and algorithm-backed decision execution.",
+    outcome:
+      "The system reliably formed all three gestures, accepted validated input, and selected the optimal hand autonomously. Key fixes resolved boot-time GPIO issues, servo initialization, and ESP-NOW pairing — the project demonstrated full cross-discipline mechatronic integration.",
 
-  bullets: [
-    "Designed a 3D-printed tendon-driven hand mechanism with grouped finger actuation using only two DC motors per hand",
-    "Developed a grooved dual-line spool to prevent wire entanglement on a single motor shaft",
-    "Implemented elastic return bands for passive finger retraction, reducing actuator count",
-    "Built a master-slave ESP32 communication layer using ESP-NOW with sequence-numbered packet validation",
-    "Implemented a three-case probabilistic game strategy algorithm based on opponent gesture input",
-    "Created a servo-driven cover mechanism to physically withdraw one hand with game-theory-guided selection",
-    "Conducted iterative mechanical testing to calibrate motor timing constants and spool dimensions",
-    "Diagnosed and resolved boot-time motor drift, servo misalignment, and slave communication desync issues",
-  ],
+    bullets: [
+      "Designed 3D-printed tendon-driven hands with grouped finger actuation using two DC motors per hand",
+      "Developed a grooved single-spool design to prevent nylon string entanglement during actuation",
+      "Implemented passive elastic-band finger return, eliminating the need for return actuators",
+      "Built a master-slave ESP32 communication layer using ESP-NOW with sequence-numbered packet validation",
+      "Implemented a three-case probabilistic game-theory strategy algorithm based on opponent gesture input",
+      "Created a servo-driven cover mechanism for the 'minus one' gesture withdrawal",
+      "Iteratively calibrated motor timing constants and spool dimensions through bench testing",
+      "Diagnosed and resolved boot-time motor drift, servo misalignment, and ESP-NOW peer-pairing failures",
+    ],
 
-  challenges: [
-    "Timing-based open-loop control produced gesture inconsistencies requiring iterative calibration",
-    "Managing four DC motors and two servos across two ESP32s within power distribution constraints",
-    "Wire entanglement in the dual-tendon spool design resolved through iterative geometric refinement",
-    "Sensor-free finger positioning made the system sensitive to friction and tendon tension variation",
-    "Maintaining ESP-NOW communication reliability across rapid consecutive game rounds",
-  ],
+    challenges: [
+      "Open-loop timing-based control produced gesture inconsistencies requiring extensive iterative calibration",
+      "Managing four DC motors and two servos across two ESP32s within power distribution constraints",
+      "Wire entanglement in early dual-tendon spool designs required multiple geometric iterations to resolve",
+      "Sensor-free finger positioning made the system sensitive to friction and tendon tension variation",
+      "Maintaining ESP-NOW communication reliability across rapid consecutive game rounds",
+    ],
 
-  learnings: [
-    "Mechanical and software subsystems must be developed in parallel - small CAD changes directly affect motor timing",
-    "Open-loop tendon actuation is highly repeatable once calibrated but difficult to repurpose for new tasks",
-    "Sequence-numbered packet validation is essential for reliable peer-to-peer communication in distributed embedded systems",
-    "Early mechanical prototyping (one hand at a time) prevents wasted material and isolates failure modes",
-    "Game-theory-backed decision logic is straightforward to implement once the input space is constrained to feasible cases",
-  ],
+    learnings: [
+      "Mechanical and software subsystems have to be developed in parallel — even small CAD changes directly affect motor timing constants",
+      "Open-loop tendon actuation is highly repeatable once calibrated, but that calibration process takes more iteration than expected",
+      "Sequence-numbered packet validation is essential for peer-to-peer communication in real embedded systems — without it, desync is inevitable",
+      "Prototyping one hand before two caught failure modes early and saved significant material and time",
+      "Game-theory decision logic is straightforward to implement once the input space is properly constrained",
+    ],
 
-  videos: [
-    "/projects/rps1-hand/demo.mov",
-  ],
-
-}
+    videos: [
+      "/projects/rps1-hand/demo.mov",
+    ],
+  },
 ];
