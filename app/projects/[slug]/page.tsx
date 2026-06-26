@@ -144,7 +144,21 @@ export default async function ProjectDetailPage({
                 );
               }
 
-              // All-text group: split text items into two columns
+              // All-text group: single item spans full width; multiple split into two columns
+              if (textOnlyGroups.length === 1) {
+                const t = textOnlyGroups[0];
+                return (
+                  <div key={gIdx}>
+                    <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
+                      {t.title}
+                    </h2>
+                    <p className="text-lg leading-8 text-[var(--muted)]">
+                      {t.text}
+                    </p>
+                  </div>
+                );
+              }
+
               const half = Math.ceil(textOnlyGroups.length / 2);
               const leftItems = textOnlyGroups.slice(0, half);
               const rightItems = textOnlyGroups.slice(half);

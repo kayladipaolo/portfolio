@@ -310,16 +310,16 @@ export const projects: Project[] = [
 
     sections: [
       {
+        group: 1,
         title: "Modeling from First Principles",
         text:
           "The Festo 24V brushed DC motor was modeled in Simulink using transfer functions derived directly from its electrical and mechanical parameters — armature resistance, inductance, back-EMF constant, moment of inertia, viscous friction, and load torque. Rather than curve-fitting a single operating point, the goal was a consistent model structure that could hold up across three distinct control scenarios without being re-derived each time.",
-        image: "/projects/pmdc-motor-modeling/hero-image.jpg",
       },
       {
+        group: 1,
         title: "Three Control Scenarios",
         text:
           "The same model was validated under open-loop duty-cycle speed control, closed-loop PI speed control, and closed-loop PI torque control. PI gains were tuned iteratively in Simulink against published excitation-test data, and cross-checked using analytical PI design equations. Open-loop testing confirmed expected speed-to-duty linearity; the closed-loop speed controller reduced steady-state error under varying loads; the torque loop maintained consistent output during simulated loading.",
-        reverse: true,
       },
     ],
 
@@ -662,11 +662,7 @@ export const projects: Project[] = [
         title: "Mechanical Design",
         text:
           "Each hand was 3D printed as individual bone-like finger segments joined to a single palm. Fingers are actuated through a tendon-driven system: DC motors wind nylon string around custom grooved spools (single spool, 1 cm centre groove depth) to prevent entanglement. Elastic bands handle passive finger return when the motor reverses, eliminating the need for a second set of actuators. The cover servo physically withdraws one hand over the selected gesture.",
-        images: [
-          "/projects/rps1-hand/hand-view-1.jpg",
-          "/projects/rps1-hand/hand-view-2.jpg",
-          "/projects/rps1-hand/hand-view-3.jpg",
-        ],
+        image: "/projects/rps1-hand/hand-view-3.jpg",
         reverse: true,
       },
       {
