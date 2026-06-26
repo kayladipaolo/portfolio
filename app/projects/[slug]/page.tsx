@@ -92,7 +92,6 @@ export default async function ProjectDetailPage({
 
               if (imageGroups.length > 0) {
                 const textItems = textOnlyGroups;
-                const imageItem = imageGroups[0];
                 const isReversed = !!mainItem.reverse && imageGroups.length > 0;
 
                 return (
@@ -103,6 +102,16 @@ export default async function ProjectDetailPage({
                     }`}
                   >
                     <div className="space-y-6">
+                      {imageGroups.map((t) => (
+                        <div key={t.title + "-text"}>
+                          <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
+                            {t.title}
+                          </h2>
+                          <p className="text-lg leading-8 text-[var(--muted)]">
+                            {t.text}
+                          </p>
+                        </div>
+                      ))}
                       {textItems.map((t) => (
                         <div key={t.title}>
                           <h2 className="mb-3 text-3xl font-bold text-[var(--ink)]">
